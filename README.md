@@ -34,5 +34,5 @@ Datenbank.
 - Datenmodel ist definiert.
 
 #### Sicherheitskonzept
- Sicherheitskonzept ist genügend detailliert spezifiziert, sodass ein drittes Team
+- Sicherheitskonzept ist genügend detailliert spezifiziert, sodass ein drittes Team
 erfahrener Softwareentwickler das Konzept umsetzen kann.
