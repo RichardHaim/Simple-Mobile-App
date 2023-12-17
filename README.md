@@ -5,7 +5,7 @@
 ### Anforderungen
 
 #### Allgemeine Anforderungen
-. App ist eine mobile App (keine z.B. PWA - Progressive Web App)
+- App ist eine mobile App (keine z.B. PWA - Progressive Web App)
 - App unterstützt mehrere Benutzer
 - App ist verwendbar auch wenn der Server nicht verfügbar ist
 - App Daten sind permanent persistiert
