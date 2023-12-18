@@ -2,6 +2,7 @@
 
 ## ER-Modell
 
+![](ER-Modell.drwawio.png)
 
 
 ## Datentypen
