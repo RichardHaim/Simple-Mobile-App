@@ -30,7 +30,7 @@
 
 
 ## Optionen für die Dringlichkeit des Tickets
-Kategorie 1) nicht dringend, keine Unterbrechung der Arbeit
-Kategorie 2) mäßig dringend, Arbeit kann erledigt werden, jedoch mit Unterbrechungen
-Kategorie 3) dringend, Arbeit kann nur erschwert erledigt werden
+Kategorie 1) nicht dringend, keine Unterbrechung der Arbeit \
+Kategorie 2) mäßig dringend, Arbeit kann erledigt werden, jedoch mit Unterbrechungen \
+Kategorie 3) dringend, Arbeit kann nur erschwert erledigt werden \
 Kategorie 4) sehr dringend, Arbeit kann _nicht_ erledigt werden
