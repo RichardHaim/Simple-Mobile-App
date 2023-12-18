@@ -3,7 +3,8 @@
 ## ER-Modell
 
 ![](ER-Modell.drwawio.png)
-
+<img src="ER-Modell.drawio.png"
+     alt="ER-Modell"/>
 
 ## Datentypen
 
