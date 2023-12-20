@@ -26,7 +26,7 @@ app.get('/getTickets', async (req, res) => {
       // Verbindung zum SQL Server herstellen
       const poolConnection = await sql.connect(config);
       console.log('Anfrage zum Abrufen der Tickets erhalten');
-      // SQL Query ausführen, um alle Einträge aus der Tabelle abzurufen
+      
       const resultSet = await poolConnection.request().query('SELECT * FROM [dbo].[Tickets]');
       console.log('Tickets erfolgreich zurückgegeben');
       // Tickets als JSON zurücksenden
@@ -40,7 +40,7 @@ app.get('/getTickets', async (req, res) => {
     }
   });
   
-  // ...
+  
   
   app.listen(port, () => {
     console.log(`Server läuft auf http://localhost:${port}`);

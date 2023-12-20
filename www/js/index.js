@@ -17,16 +17,16 @@ document.getElementById('getTickets').addEventListener('click', async function()
 
 async function loadTickets() {
     try {
-        const response = await fetch('http://DEINE_IP_ADRESSE:3000/getTickets');
+        const response = await fetch('http://localhost:3000/getTickets');
         const tickets = await response.json();
 
-        // Hier kannst du die Tickets in der UI darstellen, z.B., in einem div mit der ID 'ticketList'
+        
         const ticketListDiv = document.getElementById('ticketList');
         ticketListDiv.innerHTML = '';
 
         tickets.forEach(ticket => {
             const ticketInfo = document.createElement('div');
-            ticketInfo.classList.add('ticketInfo'); // Hinzufügen der CSS-Klasse
+            ticketInfo.classList.add('ticketInfo'); 
             ticketInfo.innerHTML = `
                 <p>MitarbeiterId: ${ticket.MitarbeiterId}</p>
                 <p>ProblemKategorieId: ${ticket.ProblemKategorieId}</p>
