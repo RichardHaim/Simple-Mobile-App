@@ -9,3 +9,7 @@ document.getElementById('viewOpenTickets').addEventListener('click', function() 
 document.getElementById('viewClosedTickets').addEventListener('click', function() {
     document.location.href = 'tickets_viewAllClosed.html'
 });
+
+document.getElementById('internet').addEventListener('click', function() {
+    document.location.href = 'www.google.com'
+});
