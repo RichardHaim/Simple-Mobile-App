@@ -9,6 +9,10 @@ document.getElementById('ticketForm').addEventListener('submit', async function(
     await loadTickets();
 });
 
+document.getElementById('welcome').addEventListener('click', function() {
+    document.location.href = 'home.html'
+});
+
 document.getElementById('getTickets').addEventListener('click', async function() {
     console.log('Load Tickets button clicked');
     await loadTickets();
