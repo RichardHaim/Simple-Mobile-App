@@ -13,15 +13,15 @@ document.getElementById('welcome').addEventListener('click', function() {
     document.location.href = 'home.html'
 });
 
-document.getElementById('getTickets').addEventListener('click', async function() {
+
+document.getElementById('getTickets').addEventListener('click', async function() {;
     console.log('Load Tickets button clicked');
     await loadTickets();
 });
 
-
 async function loadTickets() {
     try {
-        const response = await fetch('http://localhost:3000/getTickets');
+        const response = await fetch('http://172.20.10.12:3000/getTickets');
         const tickets = await response.json();
 
         
@@ -48,4 +48,5 @@ async function loadTickets() {
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
     }
+
 }
