@@ -5,6 +5,15 @@ body {
     background-color: #f4f4f4; /* Hintergrundfarbe hinzugefügt */
 }
 
+.logo_container {
+    margin: 20px auto; /* Zentrierung des Formulars */
+    text-align: center;
+}
+
+.logo {
+    height: 10%;
+}
+
 form {
     max-width: 400px; /* Maximale Breite des Formulars für eine bessere Lesbarkeit */
     margin: 20px auto; /* Zentrierung des Formulars */
