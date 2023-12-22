@@ -27,7 +27,9 @@ app.get('/getTickets', async (req, res) => {
       const poolConnection = await sql.connect(config);
       console.log('Anfrage zum Abrufen der Tickets erhalten');
       
-      const resultSet = await poolConnection.request().query('SELECT * FROM [dbo].[Tickets]');
+      const resultSet = await poolConnection.request().query(
+        'SELECT * FROM [dbo].[Tickets]'
+        );
       console.log('Tickets erfolgreich zurückgegeben');
       // Tickets als JSON zurücksenden
       res.json(resultSet.recordset);
