@@ -22,7 +22,7 @@ document.getElementById('getTickets').addEventListener('click', async function()
 async function loadTickets() {
     try {
         const response = await fetch('http://10.0.2.2:3000/getTickets');
-        //const response = await fetch('http://172.20.10.12:3000/getTickets');
+        //const response = await fetch('http://localhost:3000/getTickets');
         const tickets = await response.json();
 
         
@@ -33,6 +33,7 @@ async function loadTickets() {
             const ticketInfo = document.createElement('div');
             ticketInfo.classList.add('ticketInfo'); 
             ticketInfo.innerHTML = `
+            <form id="ticketForm">
                 <p>MitarbeiterId: ${ticket.MitarbeiterId}</p>
                 <p>ProblemKategorieId: ${ticket.ProblemKategorieId}</p>
                 <p>DringlichkeitId: ${ticket.DringlichkeitId}</p>
@@ -41,7 +42,7 @@ async function loadTickets() {
                 <p>Beschreibung: ${ticket.Beschreibung}</p>
                 <p>DatumEingabe: ${ticket.DatumEingabe}</p>
                 <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
-                <hr>
+            </form>
             `;
             ticketListDiv.appendChild(ticketInfo);
         });

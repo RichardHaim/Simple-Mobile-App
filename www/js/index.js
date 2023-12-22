@@ -21,8 +21,8 @@ document.getElementById('getTickets').addEventListener('click', async function()
 
 async function loadTickets() {
     try {
-        //const response = await fetch('http://10.0.2.2:3000/getTickets');
-        const response = await fetch('http://localhost:3000/getTickets');
+        const response = await fetch('http://10.0.2.2:3000/getTickets');
+        //const response = await fetch('http://localhost:3000/getTickets');
         const tickets = await response.json();
 
         
