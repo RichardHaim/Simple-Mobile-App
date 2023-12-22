@@ -12,6 +12,7 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
+    <allow-navigation href="http://*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <preference name="loglevel" value="DEBUG" />
