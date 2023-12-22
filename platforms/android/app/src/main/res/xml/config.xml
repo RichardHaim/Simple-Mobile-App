@@ -3,6 +3,9 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
+    <feature name="CordovaPluginsCleartext">
+        <param name="android-package" value="cordova.plugins.cleartext" />
+    </feature>
     <name>HelloCordova</name>
     <description>Sample Apache Cordova App</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
