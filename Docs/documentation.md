@@ -1,4 +1,4 @@
-# Dokumentation Haushaltsbuch App
+# Dokumentation Ticket App
 
 ### 17.12.2023
 
@@ -8,7 +8,7 @@ Wir haben die Arbeit in Backend und Frontend aufgeteilt. Dorian Pfeiler und Mich
 Die Dokumentation sowie Präsentation übernimmt Sükrü Kakici.
 Dorian Pfeiler wird bis zum nächsten Termin sich Gedanken zur Communciation zwischen Server und DB machen (Push, Pull), Richard Gedanken zu Design sowie Layout.
 
-Nächster Termin: Mittwoch, 20.12.2024 vor Ort, Kakici wird sich im Anschluss mit den einzelnen Mitgliedern über den Fortschritt austauschen.
+Nächster Termin: Mittwoch, 20.12.2023 vor Ort, Kakici wird sich im Anschluss mit den einzelnen Mitgliedern über den Fortschritt austauschen.
 
 ### 20.12.2023
 
