@@ -1,6 +1,8 @@
-# Simple-Mobile-App von Haim, Kakici, Krummschmied, Pfeiler
+# Simple-Mobile-App von Haim, Kakici, Krumschmied, Pfeiler
 
-## Haushaltsbuch
+## Simples Ticket System
+
+Tickets kommen rein, Tickets kann man anschaun, bearbeiten und abschließen
 
 ### Anforderungen
 
