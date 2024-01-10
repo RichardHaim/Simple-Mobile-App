@@ -1,4 +1,4 @@
-# Simple-Mobile-App von Haim, Kakici, Krumschmied, Pfeiler
+# Simple-Mobile-App von Haim, Kakici, Krumpschmid, Pfeiler
 
 ## Simples Ticket System
 
