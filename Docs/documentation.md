@@ -18,3 +18,4 @@ Microsoft Azure SQL Server erstellt und konfiguriert
 API Schnittstelle erstellt jedoch nicht voll funktionsfähig
 Node.js Server erstellt welche auf SQL Server zugreifen soll aber nicht funktionsfähig
 Tables in die DB gepusht
+Datentypen festgelegt
