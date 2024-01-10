@@ -12,10 +12,10 @@ Nächster Termin: Mittwoch, 20.12.2024 vor Ort, Kakici wird sich im Anschluss mi
 
 ### 20.12.2023
 
-Layout und Design erstellt
-Visualisierung der Datenbankstrukur und ER-Modell
-Microsoft Azure SQL Server erstellt und konfiguriert 
-API Schnittstelle erstellt jedoch nicht voll funktionsfähig
-Node.js Server erstellt welche auf SQL Server zugreifen soll aber nicht funktionsfähig
-Tables in die DB gepusht
-Datentypen festgelegt
+- Layout und Design erstellt
+- Visualisierung der Datenbankstrukur und ER-Modell
+- Microsoft Azure SQL Server erstellt und konfiguriert 
+- API Schnittstelle erstellt jedoch nicht voll funktionsfähig
+- Node.js Server erstellt welche auf SQL Server zugreifen soll aber nicht funktionsfähig
+- Tables in die DB gepusht
+- Datentypen festgelegt
