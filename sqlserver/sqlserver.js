@@ -66,7 +66,7 @@ app.get('/getTickets', async (req, res) => {
         JOIN dbo.Dringlichkeit AS d ON t.DringlichkeitId = d.Id 
         JOIN dbo.SupportTeam AS st ON t.SupportTeamId = st.Id
         JOIN dbo.Mitarbeiter AS ma ON t.MitarbeiterId = ma.Id 
-        WHERE ts.Id = 3
+        WHERE ts.Id = 2
         ORDER BY t.DatumEingabe ASC`
       );
 
