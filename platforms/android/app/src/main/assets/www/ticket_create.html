@@ -2,6 +2,7 @@
     <head>
         <title>Ticket App</title>
         <link rel="stylesheet" href="css/ticket_create.css">
+        <script src="js/create_ticket.js"></script>
     </head>
     <body>
         <form id="createNewTicket_header">
@@ -69,22 +70,7 @@
 
         <button type="button" id="submit_newTicket">Submit</button>
 
-        <script>
-            document.getElementById("submit_newTicket").addEventListener("click", function() {
-                document.getElementById("datetime_input").value = getCurrentDateTime();
-            });
 
-            function getCurrentDateTime() {
-                var now = new Date();
-                var year = now.getFullYear();
-                var month = (now.getMonth() + 1).toString().padStart(2, '0');
-                var day = now.getDate().toString().padStart(2, '0');
-                var hours = now.getHours().toString().padStart(2, '0');
-                var minutes = now.getMinutes().toString().padStart(2, '0');
-                var formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-                return formattedDateTime;
-            }
-        </script>
     </body>
 </html>
 
