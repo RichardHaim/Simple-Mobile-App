@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const datetimeInput = document.getElementById("datetime_input");
+    const submitButton = document.getElementById("submit_newTicket");
 
-    document.getElementById("datetime_input").value = getCurrentDateTime();
-    document.getElementById("submit_newTicket").addEventListener("click", function() {
-        document.getElementById("datetime_input").value = getCurrentDateTime();
+    datetimeInput.value = getCurrentDateTime();
+
+    submitButton.addEventListener("click", function() {
+        datetimeInput.value = getCurrentDateTime();
         const description = document.getElementById("description_input").value;
-        const datetime = document.getElementById("datetime_input").value;
+        const datetime = datetimeInput.value;
         const employeeId = document.getElementById("mitarbeiter_id").value;
         const problemCategoryId = document.getElementById("problem_names").value;
         const dringlichkeitId = document.getElementById("dringlichkeitid_names").value;
@@ -19,9 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var year = now.getFullYear();
         var month = (now.getMonth() + 1).toString().padStart(2, '0');
         var day = now.getDate().toString().padStart(2, '0');
-        var hours = now.getHours().toString().padStart(2, '0');
-        var minutes = now.getMinutes().toString().padStart(2, '0');
-        var formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+        var formattedDateTime = `${year}-${month}-${day}`;
         return formattedDateTime;
     }
 

@@ -104,8 +104,8 @@ app.get('/getTickets', async (req, res) => {
 
        
         const result = await poolConnection.request().query(`
-            INSERT INTO [dbo].[Tickets] (MitarbeiterId, ProblemKategorieId, DringlichkeitId, SupportTeamId, StatusTicketId, Beschreibung, DatumEingabe)
-            VALUES (${MitarbeiterId}, ${ProblemKategorieId}, ${DringlichkeitId}, ${SupportTeamId}, ${StatusTicketId}, '${Beschreibung}', '${DatumEingabe}')
+        INSERT INTO [dbo].[Tickets] (MitarbeiterId, ProblemKategorieId, DringlichkeitId, SupportTeamId, StatusTicketId, Beschreibung, DatumEingabe)
+        VALUES (${MitarbeiterId}, ${ProblemKategorieId}, ${DringlichkeitId}, ${SupportTeamId}, ${StatusTicketId}, '${Beschreibung}', CONVERT(datetime, '${DatumEingabe}', 126))
         `);
 
         console.log('Ticket successfully created');
