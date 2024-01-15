@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     datetimeInput.value = getCurrentDateTime();
 
-    submitButton.addEventListener("click", function() {
+    submitButton.addEventListener("click", async function() {
         datetimeInput.value = getCurrentDateTime();
         const description = document.getElementById("description_input").value;
         const datetime = datetimeInput.value;
@@ -13,8 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const dringlichkeitId = document.getElementById("dringlichkeitid_names").value;
         const supportTeamId = document.getElementById("SupportTeamId_names").value;
         const ticketStatusId = document.getElementById("TicketStatusId_names").value;
-
-        createNewTicket(description, datetime, employeeId, problemCategoryId, dringlichkeitId, supportTeamId, ticketStatusId);
+        const payload = {
+                    'MitarbeiterId': employeeId,
+                    'ProblemKategorieId': problemCategoryId,
+                    'DringlichkeitId': dringlichkeitId,
+                    'SupportTeamId': supportTeamId,
+                    'StatusTicketId': ticketStatusId,
+                    'Beschreibung': description,
+                    'DatumEingabe': datetime
+                };
+        await createNewTicket(payload);
     });
 
     function getCurrentDateTime() {
@@ -26,31 +34,22 @@ document.addEventListener("DOMContentLoaded", function() {
         return formattedDateTime;
     }
 
-    async function createNewTicket(description, datetime, employeeId, problemCategoryId, dringlichkeitId, supportTeamId, ticketStatusId) {
-        try {
-            const response = await fetch('http://10.0.2.2/CreateTicket', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    MitarbeiterId: employeeId,
-                    ProblemKategorieId: problemCategoryId,
-                    DringlichkeitId: dringlichkeitId,
-                    SupportTeamId: supportTeamId,
-                    StatusTicketId: ticketStatusId,
-                    Beschreibung: description,
-                    DatumEingabe: datetime
-                }),
-            });
-
-            if (response.ok) {
-                console.log('Ticket created successfully');
-            } else {
-                console.error('Error creating ticket:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error creating ticket:', error);
-        }
+    async function createNewTicket(payload) {
+    try {
+        console.log(JSON.stringify(payload));
+        const response = await fetch('http://10.0.2.2/CreateTicket', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload),
+        });
+        const result = await response.json();
+        console.log(result);
+        console.log("Success:", result);
+    } catch (error) {
+      console.error('Error creating ticket:', error);
+    }
     }
 });
