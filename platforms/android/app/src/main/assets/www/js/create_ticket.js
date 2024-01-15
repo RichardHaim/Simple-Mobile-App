@@ -52,4 +52,4 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error('Error creating ticket:', error);
     }
     }
-});
+    )};
