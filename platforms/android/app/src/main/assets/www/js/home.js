@@ -9,7 +9,3 @@ document.getElementById('viewOpenTickets').addEventListener('click', function() 
 document.getElementById('viewClosedTickets').addEventListener('click', function() {
     document.location.href = 'tickets_viewAllClosed.html'
 });
-
-document.getElementById('pushDummyTicket').addEventListener('click', function() {
-    document.location.href = 'pushDummyTicket.html'
-});
