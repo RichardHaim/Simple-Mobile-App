@@ -15,9 +15,12 @@ document.getElementById('getTickets').addEventListener('click', async function()
     await loadTickets();
 });
 
+// Speichert die Daten auf den localstore
 function saveJsonObjToFile(tickets) {
-    localStorage.setItem("tickets", JSON.stringify(tickets))
+    localStorage.setItem("tickets", JSON.stringify(tickets));
+    console.log('Daten erfolgreich gespeichert')
 };
+
 
 async function loadTickets() {
     try {
