@@ -1,11 +1,21 @@
-document.getElementById('ticketForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+window.addEventListener("DOMContentLoaded", (event) => {
+    readJsonObjFromFile();
+    });
 
-    var title = document.getElementById('title').value;
-    var description = document.getElementById('description').value;
+window.addEventListener('load', function(e) {
+    if (navigator.onLine) {
+        console.log('We\'re online!');
+    } else {
+        console.log('We\'re offline...');
+    }
+}, false);
 
-    console.log('Ticket created:', title, description);
-
-    // Add code here to store the ticket data in a suitable data structure
-    // and perform any additional actions such as updating the UI or communicating with a backend server.
+document.getElementById('welcome').addEventListener('click', function() {
+    document.location.href = 'home.html'
 });
+
+function readJsonObjFromFile() {
+    const checker = localStorage.getItem("tickets");
+    console.log("tickets im internen Speicher: ", JSON.parse(JSON.stringify(checker)));
+    console.log("Anzahl an Einträgen: ", Object.keys(checker).length);
+};
