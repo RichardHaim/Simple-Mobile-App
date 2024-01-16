@@ -23,7 +23,7 @@ document.getElementById('getTickets').addEventListener('click', async function()
 
 async function loadTickets() {
     try {
-        const response = await fetch('http://10.0.2.2:3000/getTickets')
+        const response = await fetch('http://10.0.2.2:3000/getTickets');
         //const response = await fetch('http://localhost:3000/getTickets');
         const tickets = await response.json();
 
@@ -49,9 +49,12 @@ async function loadTickets() {
             `;
             ticketListDiv.appendChild(ticketInfo);
         });
-
+        saveToLocalstorage(tickets);
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
-    }
-
+    };
 }
+
+function saveToLocalstorage(tickets) {
+    console.log("geht noch net");
+    };

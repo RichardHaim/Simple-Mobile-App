@@ -21,7 +21,7 @@ function getFieldInput () {
         'DatumEingabe': document.getElementById("datetime_input").value
         };
     return payload;
-}
+};
 
 function getCurrentDateTime() {
     var now = new Date();
@@ -30,7 +30,7 @@ function getCurrentDateTime() {
     var day = now.getDate().toString().padStart(2, '0');
     var formattedDateTime = `${year}-${month}-${day}`;
     return formattedDateTime;
- }
+ };
 
  async function pushticket (payload) {
      try {
@@ -42,6 +42,6 @@ function getCurrentDateTime() {
         const result = await response;
         console.log ("Success:", result);
      } catch (error) {
-         console.error ('Fehler beim Laden der Tickets:', error);
+         console.error ('Fehler beim Upload der Tickets:', error);
      }
- }
+ };
