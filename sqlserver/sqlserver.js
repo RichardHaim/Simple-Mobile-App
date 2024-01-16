@@ -47,13 +47,79 @@ app.get('/getTickets', async (req, res) => {
     try {
       // Verbindung zum SQL Server herstellen
       const poolConnection = await sql.connect(config);
-      console.log('Anfrage zum Abrufen der Tickets erhalten');
+      console.log('Anfrage zum Abrufen der Mitarbeiter erhalten');
 
       const resultSet = await poolConnection.request().query(
         'SELECT * FROM [dbo].[Mitarbeiter]'        
         );
 
       console.log('Mitarbeiter erfolgreich zurückgegeben');
+      // Tickets als JSON zurücksenden
+      res.json(resultSet.recordset);
+  
+      // Verbindung schließen, wenn die Anwendung abgeschlossen ist
+      await sql.close();
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Interner Serverfehler');
+    }
+  });
+
+  app.get('/getProblemkategorie', async (req, res) => {
+    try {
+      // Verbindung zum SQL Server herstellen
+      const poolConnection = await sql.connect(config);
+      console.log('Anfrage zum Abrufen der Problemkategorien erhalten');
+
+      const resultSet = await poolConnection.request().query(
+        'SELECT * FROM [dbo].[ProblemKategorie]'        
+        );
+
+      console.log('Probleme erfolgreich zurückgegeben');
+      // Tickets als JSON zurücksenden
+      res.json(resultSet.recordset);
+  
+      // Verbindung schließen, wenn die Anwendung abgeschlossen ist
+      await sql.close();
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Interner Serverfehler');
+    }
+  });
+
+  app.get('/getSupportteam', async (req, res) => {
+    try {
+      // Verbindung zum SQL Server herstellen
+      const poolConnection = await sql.connect(config);
+      console.log('Anfrage zum Abrufen der Supportteams erhalten');
+
+      const resultSet = await poolConnection.request().query(
+        'SELECT * FROM [dbo].[SupportTeam]'        
+        );
+
+      console.log('Supportteams erfolgreich zurückgegeben');
+      // Tickets als JSON zurücksenden
+      res.json(resultSet.recordset);
+  
+      // Verbindung schließen, wenn die Anwendung abgeschlossen ist
+      await sql.close();
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Interner Serverfehler');
+    }
+  });
+
+  app.get('/getTicketstatus', async (req, res) => {
+    try {
+      // Verbindung zum SQL Server herstellen
+      const poolConnection = await sql.connect(config);
+      console.log('Anfrage zum Abrufen der Ticketstatus erhalten');
+
+      const resultSet = await poolConnection.request().query(
+        'SELECT * FROM [dbo].[TicketStatus]'        
+        );
+
+      console.log('Ticketstatus erfolgreich zurückgegeben');
       // Tickets als JSON zurücksenden
       res.json(resultSet.recordset);
   
