@@ -2,7 +2,7 @@
 window.onload =  async function() {
     await loadClosedTickets();
  };
-
+// test
 async function loadClosedTickets() {
     try {
         const response = await fetch('http://10.0.2.2:3000/getClosedTickets');
