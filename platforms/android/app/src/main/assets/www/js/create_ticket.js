@@ -3,33 +3,25 @@ window.onload = function () {
 };
 
 window.addEventListener("DOMContentLoaded", (event) => {
-document.getElementById("submit_newTicket").addEventListener("click", async function() {
-    payload = getFieldInput();
-    await pushticket(payload);
-    console.log(JSON.stringify(payload));
-});
+    document.getElementById("submit_newTicket").addEventListener("click", async function() {
+        payload = getFieldInput();
+        await pushticket(payload);
+        //console.log(JSON.stringify(payload));
+    });
 });
 
 function getFieldInput () {
-      const description = document.getElementById("description_input").value;
-      const datetime = document.getElementById("datetime_input").value;
-      const employeeId = document.getElementById("mitarbeiter_id").value;
-      const problemCategoryId = document.getElementById("problem_names").value;
-      const dringlichkeitId = document.getElementById("dringlichkeitid_names").value;
-      const supportTeamId = document.getElementById("SupportTeamId_names").value;
-      const ticketStatusId = document.getElementById("TicketStatusId_names").value;
-      const payload = {
-          'MitarbeiterId': employeeId,
-          'ProblemKategorieId': problemCategoryId,
-          'DringlichkeitId': dringlichkeitId,
-          'SupportTeamId': supportTeamId,
-          'StatusTicketId': ticketStatusId,
-          'Beschreibung': description,
-          'DatumEingabe': datetime
-          };
+    const payload = {
+        'MitarbeiterId': document.getElementById("mitarbeiter_id").value,
+        'ProblemKategorieId': document.getElementById("problem_names").value,
+        'DringlichkeitId': document.getElementById("dringlichkeitid_names").value,
+        'SupportTeamId': document.getElementById("SupportTeamId_names").value,
+        'StatusTicketId': document.getElementById("TicketStatusId_names").value,
+        'Beschreibung': document.getElementById("description_input").value,
+        'DatumEingabe': document.getElementById("datetime_input").value
+        };
     return payload;
 }
-
 
 function getCurrentDateTime() {
     var now = new Date();
@@ -40,17 +32,16 @@ function getCurrentDateTime() {
     return formattedDateTime;
  }
 
- async function pushticket(payload) {
+ async function pushticket (payload) {
      try {
-         const response = await fetch('http://10.0.2.2:3000/CreateTicket', {
+         const response = await fetch ('http://10.0.2.2:3000/CreateTicket', {
              method: 'POST',
-             body: JSON.stringify(payload),
+             body: JSON.stringify (payload),
              headers: {'Content-Type': 'application/json'}
          });
         const result = await response;
-        console.log(result);
-        console.log("Success:", result);
+        console.log ("Success:", result);
      } catch (error) {
-         console.error('Fehler beim Laden der Tickets:', error);
+         console.error ('Fehler beim Laden der Tickets:', error);
      }
  }
