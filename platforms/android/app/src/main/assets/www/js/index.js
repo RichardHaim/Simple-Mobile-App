@@ -1,60 +1,12 @@
-/*
-document.getElementById('ticketForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-
-    var title = document.getElementById('title').value;
-    var description = document.getElementById('description').value;
-
-    console.log('Ticket created:', title, description);
-
-    await loadTickets();
-});
-*/
-
 document.getElementById('welcome').addEventListener('click', function() {
     document.location.href = 'home.html'
 });
 
+function saveJsonObjToFile(tickets) {
+    localStorage.setItem("tickets", JSON.stringify(tickets))
+};
 
-document.getElementById('getTickets').addEventListener('click', async function() {;
-    console.log('Load Tickets button clicked');
-    await loadTickets();
-});
-
-async function loadTickets() {
-    try {
-        const response = await fetch('http://10.0.2.2:3000/getTickets');
-        //const response = await fetch('http://localhost:3000/getTickets');
-        const tickets = await response.json();
-
-        console.log(response);
-
-        const ticketListDiv = document.getElementById('ticketList');
-        ticketListDiv.innerHTML = '';
-
-        tickets.forEach(ticket => {
-            const ticketInfo = document.createElement('div');
-            ticketInfo.classList.add('ticketInfo'); 
-            ticketInfo.innerHTML = `
-            <form id="ticketForm">
-                <p>MitarbeiterId: ${ticket.MitarbeiterId}</p>
-                <p>ProblemKategorieId: ${ticket.ProblemKategorieId}</p>
-                <p>DringlichkeitId: ${ticket.DringlichkeitId}</p>
-                <p>SupportTeamId: ${ticket.SupportTeamId}</p>
-                <p>StatusTicketId: ${ticket.StatusTicketId}</p>
-                <p>Beschreibung: ${ticket.Beschreibung}</p>
-                <p>DatumEingabe: ${ticket.DatumEingabe}</p>
-                <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
-            </form>
-            `;
-            ticketListDiv.appendChild(ticketInfo);
-        });
-        saveToLocalstorage(tickets);
-    } catch (error) {
-        console.error('Fehler beim Laden der Tickets:', error);
-    };
-}
-
-function saveToLocalstorage(tickets) {
-    console.log("geht noch net");
-    };
+function readJsonObjFromFile() {
+    const checker = localStorage.getItem("tickets");
+    console.log("tickets im internen Speicher: ", JSON.parse(JSON.stringify(checker)));
+};
