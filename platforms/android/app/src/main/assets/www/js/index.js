@@ -1,10 +1,10 @@
 // nur zum debuggen, also check, ob wir irgendwas am localstorage haben
 window.addEventListener("DOMContentLoaded", (event) => {
-    readJsonObjFromFile("tickets");
-    readJsonObjFromFile("mitarbeiter");
-    readJsonObjFromFile("problemkategorie");
-    readJsonObjFromFile("supportteam");
-    readJsonObjFromFile("ticketstatus");
+    tables = ["tickets", "mitarbeiter", "problemkategorie", "supportteam", "ticketstatus"];
+    let i = 0;
+    while (i < tables.length) {
+        readJsonObjFromFile(i);
+        i++};
     });
 
 // check online / offline
