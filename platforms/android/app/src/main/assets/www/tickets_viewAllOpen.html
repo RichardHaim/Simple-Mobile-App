@@ -1,32 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Ticket App</title>
     <link rel="stylesheet" href="css/tickets_view.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <h1>View all Open tickets</h1>
-
-    <div id="ticketData"></div>
-
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: 'http://169.254.89.29/sqlTicket/dbconnection.php',
-                method: 'GET',
-                dataType: 'text',
-                success: function(response) {
-                    console.log('Daten erhalten:', response);
-                    // Verarbeite die Textdaten hier
-                    $('#ticketData').html(response); // Anzeigen der Textdaten im HTML
-                },
-                error: function(xhr, status, error) {
-                    console.error('Fehler beim Abrufen der Daten:', error);
-                }
-            });
-        });
-    </script>
+<h1>View all Closed tickets</h1>
+<div id="ticketList"></div>
+<script src="js/tickets_viewAllOpen.js"></script>
 </body>
 </html>
