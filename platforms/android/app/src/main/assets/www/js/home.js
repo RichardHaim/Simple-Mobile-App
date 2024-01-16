@@ -15,6 +15,9 @@ document.getElementById('getTickets').addEventListener('click', async function()
     await loadTickets();
 });
 
+function saveJsonObjToFile(tickets) {
+    localStorage.setItem("tickets", JSON.stringify(tickets))
+};
 
 async function loadTickets() {
     try {
@@ -44,6 +47,10 @@ async function loadTickets() {
             `;
             ticketListDiv.appendChild(ticketInfo);
         });
+
+        // save output to local storage
+        saveJsonObjToFile(tickets);
+
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
     };
