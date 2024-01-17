@@ -8,6 +8,16 @@ const tables = ["tickets",
                 "newTicketsQUEUE",
                 "changeTicketsQUEUE"];
 
+export async function onlinechecker() {
+    if (navigator.onLine) {
+        console.log('We\'re online!');
+        return true;
+    } else {
+        console.log('We\'re offline...');
+        return false;
+    }
+};
+
 
 // auslesen localstorage
 export function readJsonObjFromFile(filename) {

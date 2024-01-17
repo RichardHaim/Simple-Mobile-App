@@ -2,15 +2,14 @@ import * as common from './common.js';
 
 // check online / offline
 // wenn online -> lade daten vom server + speichere in localstorage
-window.addEventListener('load', async function(e) {
-    common.readAllFiles();
-    if (navigator.onLine) {
-        console.log('We\'re online!');
+
+window.addEventListener('load', async function() {
+    const currentStatus = await common.onlinechecker();
+    if (currentStatus) {
         await common.fullServerLoad();
-    } else {
-        console.log('We\'re offline...');
-    }
-}, false);
+        }
+});
+
 
 // button -> App Starten
 document.getElementById('welcome').addEventListener('click', function() {
