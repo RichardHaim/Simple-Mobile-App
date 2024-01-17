@@ -1,15 +1,10 @@
-// nur zum debuggen, also check, ob wir irgendwas am localstorage haben
-window.addEventListener("DOMContentLoaded", (event) => {
-    tables = ["tickets", "mitarbeiter", "problemkategorie", "supportteam", "ticketstatus"];
-    let i = 0;
-    while (i < tables.length) {
-        readJsonObjFromFile(i);
-        i++};
-    });
+import * as common from './common.js';
+
 
 // check online / offline
 // wenn online -> lade daten vom server + speichere in localstorage
 window.addEventListener('load', async function(e) {
+    common.readAllFiles();
     if (navigator.onLine) {
         console.log('We\'re online!');
         await loadTickets();
@@ -27,19 +22,29 @@ document.getElementById('welcome').addEventListener('click', function() {
     document.location.href = 'home.html'
 });
 
-// auslesen localstorage
-function readJsonObjFromFile(filename) {
-    const checker = localStorage.getItem(filename);
-    console.log(filename, "im internen Speicher: ", JSON.parse(JSON.stringify(checker)));
-    console.log("Anzahl an Einträgen: ", Object.keys(checker).length);
-};
 
-// speichern localstorage
-function saveJsonObjToFile(file, filename) {
-    localStorage.setItem(filename, JSON.stringify(file));
-    console.log('Daten erfolgreich gespeichert');
-    readJsonObjFromFile(filename);
-};
+/*
+// GET vom server für Tickets
+async function loadData() {
+    server_functions = ['getTickets',
+                        'getMitarbeiter',
+                        'getProblemkategorie',
+                        'getSupportteam']
+    try {
+        const response = await fetch('http://10.0.2.2:3000/getTickets');
+        const data = await response.json();
+        console.log(response);
+        // Tickets speichern
+        console.log('Daten erfolgreich vom Server geholt', JSON.stringify(data));
+        common.saveJsonObjToFile(data, "tickets");
+    } catch (error) {
+        console.error('Fehler beim Laden der Tickets:', error);
+    };
+}
+*/
+
+
+
 
 // GET vom server für Tickets
 async function loadTickets() {
@@ -49,7 +54,7 @@ async function loadTickets() {
         console.log(response);
         // Tickets speichern
         console.log('Daten erfolgreich vom Server geholt', JSON.stringify(data));
-        saveJsonObjToFile(data, "tickets");
+        common.saveJsonObjToFile(data, "tickets");
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
     };
@@ -63,7 +68,7 @@ async function loadMitarbeiter() {
         console.log(response);
         // speichern
         console.log('Mitarbeiter erfolgreich vom Server geholt', JSON.stringify(data));
-        saveJsonObjToFile(data, "mitarbeiter");
+        common.saveJsonObjToFile(data, "mitarbeiter");
     } catch (error) {
         console.error('Fehler beim Laden der Mitarbeiter:', error);
     };
@@ -77,7 +82,7 @@ async function loadProblemkategorie() {
         console.log(response);
         // speichern
         console.log('Problemkategorien erfolgreich vom Server geholt', JSON.stringify(data));
-        saveJsonObjToFile(data, "problemkategorie");
+        common.saveJsonObjToFile(data, "problemkategorie");
     } catch (error) {
         console.error('Fehler beim Laden der Problemkategorien:', error);
     };
@@ -91,7 +96,7 @@ async function loadSupportteam() {
         console.log(response);
         // speichern
         console.log('Supportteam erfolgreich vom Server geholt', JSON.stringify(data));
-        saveJsonObjToFile(data, "supportteam");
+        common.saveJsonObjToFile(data, "supportteam");
     } catch (error) {
         console.error('Fehler beim Laden der Supportteams:', error);
     };
@@ -105,7 +110,7 @@ async function loadTicketstatus() {
         console.log(response);
         // speichern
         console.log('Ticketstatus erfolgreich vom Server geholt', JSON.stringify(data));
-        saveJsonObjToFile(data, "ticketstatus");
+        common.saveJsonObjToFile(data, "ticketstatus");
     } catch (error) {
         console.error('Fehler beim Laden der Ticketstatus:', error);
     };
