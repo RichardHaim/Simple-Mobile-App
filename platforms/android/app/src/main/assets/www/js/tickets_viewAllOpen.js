@@ -51,6 +51,10 @@ async function createCards() {
                         </form>
                     `;
                     ticketListDiv.appendChild(ticketinfo);
+                    const editButtons = document.querySelectorAll(".editButton");
+                    editButtons.forEach(button => {
+                         button.addEventListener("click", handleEditTicket);
+                    });
                 }
             });
         }
@@ -60,3 +64,10 @@ async function createCards() {
     }
 }
 
+function handleEditTicket(event) {
+    const ticketId = event.target.getAttribute('data-ticket-id');
+    const ticketToEdit = common.readJsonObjFromFile('tickets').find(ticket => ticket.Id === ticketId);
+
+    // Logik um Ticket in neuem Interface zu bearbeiten
+    console.log('Editing ticket:', ticketToEdit);
+}
