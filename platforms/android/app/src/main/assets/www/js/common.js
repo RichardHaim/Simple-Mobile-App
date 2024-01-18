@@ -47,9 +47,10 @@ export function readAllFiles() {
             i++};
     };
 
-
-// Loop Server-GET & speichern im localstorage
-export async function fullServerLoad() {
+// Server-GET & speichern im localstorage
+// wenn nichts übergeben wird -> full load
+// wenn Tabellenname übergeben wird -> nur die Tabelle laden
+export async function serverLoad(table) {
     const server = "http://10.0.2.2:3000/";
     const calls = {
         'getTickets': 'tickets',
@@ -58,14 +59,34 @@ export async function fullServerLoad() {
         'getSupportteam': 'supportteam',
         'getTicketstatus': 'ticketstatus'
     };
-    for ( const [call, filename] of Object.entries(calls)) {
-        try {
-            const response = await fetch(server + call);
-            const data = await response.json();
-            console.log( filename, 'erfolgreich vom Server geholt', JSON.stringify(data));
-            saveJsonObjToFile(data, filename);
-        } catch (error) {
-            console.error('Fehler beim GET von:', filename, error);
+    // Aufruf für all Tabellen
+    if ( table == null ) {
+        for ( const [call, filename] of Object.entries(calls)) {
+            try {
+                const response = await fetch(server + call);
+                const data = await response.json();
+                console.log( filename, 'erfolgreich vom Server geholt', JSON.stringify(data));
+                saveJsonObjToFile(data, filename);
+                }
+            catch (error) {
+                console.error('Fehler beim GET von:', filename, error);
+            };
         };
-    };
+    }
+    // Aufruf für die übergebene Tabelle
+    else {
+        for ( const [call, filename] of Object.entries(calls)) {
+            if ( filename == table ) {
+                try {
+                    const response = await fetch(server + call);
+                    const data = await response.json();
+                    console.log( filename, 'erfolgreich vom Server geholt', JSON.stringify(data));
+                    saveJsonObjToFile(data, filename);
+                    }
+                catch (error) {
+                    console.error('Fehler beim GET von:', filename, error);
+                };
+            }
+        };
+    }
 }

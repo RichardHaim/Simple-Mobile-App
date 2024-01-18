@@ -8,7 +8,7 @@ window.addEventListener('load', async function() {
         const currentStatus = await common.onlinechecker();
         // Perform download only if online or it's a page refresh
         if (currentStatus || performance.navigation.type === 1) {
-            await common.fullServerLoad();
+            await common.serverLoad();
             // Set the flag in session storage to indicate that data has been downloaded in this session
             sessionStorage.setItem('dataDownloaded', true);
         };
