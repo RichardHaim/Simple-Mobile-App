@@ -59,18 +59,4 @@ async function createCards() {
         console.error('Fehler beim Laden der Tickets:', error);
     }
 }
-async function handleEditTicket(event) {
-    const ticketId = event.target.getAttribute("data-ticket-id");
-    window.location.href = `ticket_change.html?ticketId=${ticketId}`;
-}
 
-async function loadTicketData(ticketId) {
-    try {
-        const localtickets = common.readJsonObjFromFile('tickets');
-        const selectedTicket = localtickets.find(ticket => ticket.Id === ticketId);
-        return selectedTicket || null;
-    } catch (error) {
-        console.error('Fehler beim Laden der Ticketdaten:', error);
-        return null;
-    }
-}
