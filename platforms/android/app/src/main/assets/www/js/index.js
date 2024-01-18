@@ -33,3 +33,28 @@ function fillDropdown() {
         dropdown.add(option);
     });
 }
+
+window.addEventListener('load', function() {
+    // Show the loading popup
+    showLoadingPopup(true);
+
+    loadData().then(() => {
+        showLoadingPopup(false);
+    });
+});
+
+function showLoadingPopup(show) {
+    const body = document.querySelector('body');
+    const loadingPopup = document.getElementById('loadingPopup');
+    if (show) {
+        loadingPopup.style.display = 'block';
+        body.classList.add('popup-active');
+    } else {
+        loadingPopup.style.display = 'none';
+        body.classList.remove('popup-active');
+    }
+}
+
+async function loadData() {
+    await new Promise(resolve => setTimeout(resolve, 5000)); //  5-second loading process
+}

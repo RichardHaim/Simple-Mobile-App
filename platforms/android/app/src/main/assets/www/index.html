@@ -4,20 +4,27 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <div class="logo_container">
-        <img id="logo" src="img/logo.png" alt="logo" class="logo"/>
+    <!-- Popup Struktur -->
+    <div id="loadingPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Loading Data...</h2>
+            <p>Please wait while we're getting things ready for you.</p>
+        </div>
     </div>
-<form id="ticketForm">
-    <h1>Please log in</h1>
-    <form id="LoginSelectUser">
-        <!-- dropdown -->
-        <select name="Mitarbeiter_Id" id="mitarbeiterDropdown">
-            <!-- Dropdown options will be populated dynamically using JavaScript -->
-        </select><br>
-        <button type="button" id="welcome">App Starten</button>
+    <div class="logo_container">
+            <img id="logo" src="img/logo.png" alt="logo" class="logo"/>
+        </div>
+    <form id="ticketForm">
+        <h1>Please log in</h1>
+        <form id="LoginSelectUser">
+            <!-- dropdown -->
+            <select name="Mitarbeiter_Id" id="mitarbeiterDropdown">
+                <!-- Dropdown options will be populated dynamically using JavaScript -->
+            </select><br>
+            <button type="button" id="welcome">App Starten</button>
+        </form>
     </form>
-</form>
-<script src="js/index.js" type="module"></script>
-<script src="js/common.js" type="module"></script>
+    <script src="js/index.js" type="module"></script>
+    <script src="js/common.js" type="module"></script>
 </body>
 </html>
