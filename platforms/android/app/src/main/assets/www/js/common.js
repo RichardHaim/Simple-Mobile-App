@@ -5,7 +5,7 @@ const tables = ["tickets",
                 "problemkategorie",
                 "supportteam",
                 "ticketstatus",
-                "dringlichkeit"
+                "dringlichkeit",
                 "newTicketsQUEUE",
                 "changeTicketsQUEUE"];
 

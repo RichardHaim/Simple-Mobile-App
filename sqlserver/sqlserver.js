@@ -131,6 +131,29 @@ app.get('/getTickets', async (req, res) => {
     }
   });
 
+  app.get('/getDringlichkeit', async (req, res) => {
+      try {
+        // Verbindung zum SQL Server herstellen
+        const poolConnection = await sql.connect(config);
+        console.log('Anfrage zum Abrufen der Ticketstatus erhalten');
+
+        const resultSet = await poolConnection.request().query(
+          'SELECT * FROM [dbo].[Dringlichkeit]'
+          );
+
+        console.log('Ticketstatus erfolgreich zurückgegeben');
+        // Tickets als JSON zurücksenden
+        res.json(resultSet.recordset);
+
+        // Verbindung schließen, wenn die Anwendung abgeschlossen ist
+        await sql.close();
+      } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Interner Serverfehler');
+      }
+    });
+
+
   app.get('/getClosedTickets', async (req, res) => {
     try {
       // Verbindung zum SQL Server herstellen

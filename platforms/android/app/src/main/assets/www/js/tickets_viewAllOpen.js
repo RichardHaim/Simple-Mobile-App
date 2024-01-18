@@ -19,7 +19,7 @@ async function createCards() {
             const problemkategorieList = common.readJsonObjFromFile('problemkategorie');
             const supportteamList = common.readJsonObjFromFile('supportteam');
             const ticketstatusList = common.readJsonObjFromFile('ticketstatus');
-            const dringlichkeitList = common.readJsonObjFromFile)'dringlichkeit'
+            const dringlichkeitList = common.readJsonObjFromFile('dringlichkeit');
 
             localtickets.forEach(ticket => {
                 if (ticket.StatusTicketId == 1) {
@@ -36,7 +36,7 @@ async function createCards() {
                         <form id="ticketForm">
                             <p>Support Team: ${mitarbeiter ? `${mitarbeiter.Vorname} ${mitarbeiter.Nachname}` : 'N/A'}</p>
                             <p>ProblemKategorie: ${problemkategorie ? problemkategorie.Kategorie : 'N/A'}</p>
-                            <p>Dringlichkeit Id: ${ticket.DringlichkeitId}</p>
+                            <p>Dringlichkeit: ${dringlichkeit ? dringlichkeit.Kategorie : 'N/A'}</p>
                             <p>SupportTeam: ${supportteam ? supportteam.Team : 'N/A'}</p>
                             <p>StatusTicket: ${ticketstatus ? ticketstatus.Status : 'N/A'}</p>
                             <p>Beschreibung: ${ticket.Beschreibung}</p>
