@@ -24,6 +24,19 @@ export function saveJsonObjToFile(file, filename) {
 };
 ```
 
+## User carry-over
+Implement functionality, that the user selected at the login-page, is carried over to other pages/functions:
+- `ticket_create.html` to be automatically selected as 'Mitarbeiter' in a field, instead of a dropdown
+
+## Mapper für id's
+Currently, only the id is displayed for most fields. Open: Create a mapper, that loads the name of that id from localstorage. Example: Support Team: 1 should should Support Team: First Level. This needs to be done on all pages, where tickets are displayed in any form (currently `tickets_viewAllOpen.html`, `tickets_viewAllClosed.html`, `ticket_view.htm` (in development), `ticket_change.html` (in development), and `ticket_create.html` (for push).
+> [!TIP]
+> Siehe `home.js` mit der Funktion `greetMe()` als Referenz, dort wird eine bestimmte Mitarbeiter-Id im localstorage `mitarbeiter` gesucht. Rückgabe dort erfolgt als JSON-Objekt, Zugriff auf die Elemente in der Funktion `window.onload`
+
+## `ticket_create.html` dataload & mapping
+Implement dropdown dataload from local storage + make sure, that the data pushed to the server (or, if offline, stored to the queue), is mapped correctly with the respective id's.
+
+
 ## `index.html` refresh popup
 during start, there should be some kind of popup to show the user that the app is loading data. This mechanic should also prevent the user from clicking any buttons.
 
@@ -58,3 +71,9 @@ Save a) old state of ticket, and b) new state of ticket to `'changeTicketsQUEUE'
 - if yes: push new state from `'changeTicketsQUEUE'` to server & delete entry.
 - if no: Popup that informs user that there are differences + let them decide if they want to discard (delete entry from `'changeTicketsQUEUE'`), or if they want to edit. In case of edit: jump to new page -> fill in current state on server (in fields that cannot be edited) + new state from `'changeTicketsQUEUE'` (in fields that can be edited). Provide "Discard" and "Submit" button. Discard will delete the entry from `'changeTicketsQUEUE'` without push, "Submit" will post the changes to the server + delete from `'changeTicketsQUEUE'`.
 This logic is applicable for all entries in `'changeTicketsQUEUE'`.
+
+
+# Erledigt
+## User carry-over
+Implement functionality, that the user selected at the login-page, is carried over to other pages/functions:
+- `home.html`, user should be displayed with name
