@@ -6,12 +6,12 @@ body {
 }
 
 .logo_container {
-    margin: 20px auto; /* Zentrierung des Formulars */
+    margin: 60px auto; /* Zentrierung des Formulars */
     text-align: center;
 }
 
 .logo {
-    height: 10%;
+    height: 20%;
 }
 
 form {
