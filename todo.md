@@ -3,7 +3,9 @@
 
 ## `common.js`
 Make sure that functions/variables used in different locations are stored here + referenced correctly.
-### HTML:
+
+
+## HTML:
 Make sure to declare all `.js` files as `type=module` ->
 ```html
 <script src="js/common.js" type="module"></script>
@@ -51,7 +53,7 @@ In case the app is online, the following logic applies
 Save data to file `'newTicketsQUEUE'` (same format/content as table `'tickets'`). All tables loading data from table `'tickets'` also have to load data from table `'newTicketsQUEUE'`. Make sure, that the function does not return an error if the table `'newTicketsQUEUE'` is empty.<br>
 Once the app is online, all entries in `'newTicketsQUEUE'` need to be pushed to the server
 
-## ticket changes
+### ticket changes
 Save a) old state of ticket, and b) new state of ticket to `'changeTicketsQUEUE'`. Each time, the device is changing to be online (and automatically at startup): Make a check via the `ticketId`, if the old status is still the same on the server.
 - if yes: push new state from `'changeTicketsQUEUE'` to server & delete entry.
 - if no: Popup that informs user that there are differences + let them decide if they want to discard (delete entry from `'changeTicketsQUEUE'`), or if they want to edit. In case of edit: jump to new page -> fill in current state on server (in fields that cannot be edited) + new state from `'changeTicketsQUEUE'` (in fields that can be edited). Provide "Discard" and "Submit" button. Discard will delete the entry from `'changeTicketsQUEUE'` without push, "Submit" will post the changes to the server + delete from `'changeTicketsQUEUE'`.
