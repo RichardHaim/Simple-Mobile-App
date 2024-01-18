@@ -24,6 +24,10 @@ export function saveJsonObjToFile(file, filename) {
 };
 ```
 
+## Mapper für `viewAllClosed.html` und `viewAllOpen.html`
+Currently, only the id is displayed for most fields. Open: Create a mapper, that loads the name of that id from localstorage. Example: Support Team: 1 should should Support Team: First Level
+
+
 ## `index.html` refresh popup
 during start, there should be some kind of popup to show the user that the app is loading data. This mechanic should also prevent the user from clicking any buttons.
 
