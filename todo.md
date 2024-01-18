@@ -24,6 +24,10 @@ export function saveJsonObjToFile(file, filename) {
 };
 ```
 
+## User carry-over
+Implement functionality, that the user selected at the login-page, is carried over to other pages/functions:
+- `ticket_create.html` to be automatically selected as 'Mitarbeiter' in a field, instead of a dropdown
+
 ## Mapper für id's
 Currently, only the id is displayed for most fields. Open: Create a mapper, that loads the name of that id from localstorage. Example: Support Team: 1 should should Support Team: First Level. This needs to be done on all pages, where tickets are displayed in any form (currently `tickets_viewAllOpen.html`, `tickets_viewAllClosed.html`, `ticket_view.htm` (in development), `ticket_change.html` (in development), and `ticket_create.html` (for push).
 > [!TIP]
@@ -72,5 +76,4 @@ This logic is applicable for all entries in `'changeTicketsQUEUE'`.
 # Erledigt
 ## User carry-over
 Implement functionality, that the user selected at the login-page, is carried over to other pages/functions:
-- `home.html`, to be displayed on top instead of "user"
-- `ticket_create.html` to be automatically selected as 'Mitarbeiter' in a field, instead of a dropdown
+- `home.html`, user should be displayed with name
