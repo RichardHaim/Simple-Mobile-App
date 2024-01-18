@@ -109,13 +109,13 @@ export async function serverLoad(table) {
 export function offlinePopup() {
       var popup = document.createElement('div');
       popup.style.position = 'fixed';
-      popup.style.fontSize = '100px';
+      popup.style.fontSize = '2rem';
       popup.style.fontFamily = 'Verdana';
       popup.style.top = '50%';
       popup.style.left = '50%';
       popup.style.transform = 'translate(-50%, -50%)';
       popup.style.backgroundColor = 'lightblue';
-      popup.style.padding = '20px';
+      popup.style.padding = '10px';
       popup.style.border = '1px solid #ccc';
       popup.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
       popup.style.zIndex = '9999';
