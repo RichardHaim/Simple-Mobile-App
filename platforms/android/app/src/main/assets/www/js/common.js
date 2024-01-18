@@ -51,6 +51,14 @@ export function readAllFiles() {
 // wenn nichts übergeben wird -> full load
 // wenn Tabellenname übergeben wird -> nur die Tabelle laden
 export async function serverLoad(table) {
+    // Abfrage, ob wir online sind
+    if (!sessionStorage.getItem('dataDownloaded')) {
+        const currentStatus = await onlinechecker();
+        // Perform download only on initial load
+        if (currentStatus || performance.navigation.type === 1) {
+            // Set the flag in session storage to indicate that data has been downloaded in this session
+            sessionStorage.setItem('dataDownloaded', true);
+
     const server = "http://10.0.2.2:3000/";
     const calls = {
         'getTickets': 'tickets',
@@ -89,4 +97,40 @@ export async function serverLoad(table) {
             }
         };
     }
+        }
+        else {
+        offlinePopup();
+        };
+    };
+}
+
+export function offlinePopup() {
+      var popup = document.createElement('div');
+      popup.style.position = 'fixed';
+      popup.style.fontSize = '100px';
+      popup.style.fontFamily = 'Verdana';
+      popup.style.top = '50%';
+      popup.style.left = '50%';
+      popup.style.transform = 'translate(-50%, -50%)';
+      popup.style.backgroundColor = 'lightblue';
+      popup.style.padding = '20px';
+      popup.style.border = '1px solid #ccc';
+      popup.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
+      popup.style.zIndex = '9999';
+      popup.style.textAlign = 'center'; /* Center content */
+
+      var message = document.createElement('p');
+      message.textContent = 'Sorry, we are offline';
+      popup.appendChild(message);
+
+      var okButton = document.createElement('button');
+      okButton.textContent = 'OK';
+      okButton.style.marginTop = '10px';
+      okButton.style.padding = '8px 16px';
+      okButton.style.cursor = 'pointer';
+      okButton.addEventListener('click', function() {
+        document.body.removeChild(popup);
+      });
+      popup.appendChild(okButton);
+      document.body.appendChild(popup);
 }

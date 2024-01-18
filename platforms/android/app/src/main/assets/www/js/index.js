@@ -3,17 +3,8 @@ import * as common from './common.js';
 // check online / offline
 // wenn online UND initial -> lade daten vom server + speichere in localstorage
 window.addEventListener('load', async function() {
-    // Check if data has already been downloaded in the current session
-    if (!sessionStorage.getItem('dataDownloaded')) {
-        const currentStatus = await common.onlinechecker();
-        // Perform download only if online or it's a page refresh
-        if (currentStatus || performance.navigation.type === 1) {
-            await common.serverLoad();
-            // Set the flag in session storage to indicate that data has been downloaded in this session
-            sessionStorage.setItem('dataDownloaded', true);
-        };
-
-    }; fillDropdown();
+    await common.serverLoad();
+    fillDropdown();
 });
 
 
