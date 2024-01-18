@@ -25,7 +25,7 @@ export function saveJsonObjToFile(file, filename) {
 ```
 
 ## Mapper für id's
-Currently, only the id is displayed for most fields. Open: Create a mapper, that loads the name of that id from localstorage. Example: Support Team: 1 should should Support Team: First Level. This needs to be done on all pages, where tickets are displayed in any form (currently `tickets_viewAllOpen.html`, `tickets_viewAllClosed.html`, `ticket_view.htm` (in development).
+Currently, only the id is displayed for most fields. Open: Create a mapper, that loads the name of that id from localstorage. Example: Support Team: 1 should should Support Team: First Level. This needs to be done on all pages, where tickets are displayed in any form (currently `tickets_viewAllOpen.html`, `tickets_viewAllClosed.html`, `ticket_view.htm` (in development), `ticket_change.html` (in development), and `ticket_create.html` (for push).
 
 ## ticket_create.html` dataload & mapping
 Implement dropdown dataload from local storage + make sure, that the data pushed to the server (or, if offline, stored to the queue), is mapped correctly with the respective id's.
