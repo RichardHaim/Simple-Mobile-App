@@ -5,6 +5,7 @@ const tables = ["tickets",
                 "problemkategorie",
                 "supportteam",
                 "ticketstatus",
+                "dringlichkeit"
                 "newTicketsQUEUE",
                 "changeTicketsQUEUE"];
 
@@ -65,7 +66,8 @@ export async function serverLoad(table) {
         'getMitarbeiter': 'mitarbeiter',
         'getProblemkategorie': 'problemkategorie',
         'getSupportteam': 'supportteam',
-        'getTicketstatus': 'ticketstatus'
+        'getTicketstatus': 'ticketstatus',
+        'getDringlichkeit' : 'dringlichkeit'
     };
     // Aufruf für all Tabellen
     if ( table == null ) {
