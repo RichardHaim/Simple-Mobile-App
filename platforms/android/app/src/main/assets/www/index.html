@@ -8,10 +8,15 @@
         <img id="logo" src="img/logo.png" alt="logo" class="logo"/>
     </div>
 <form id="ticketForm">
-    <h1>TicketApp</h1>
-    <button type="button" id="welcome">App Starten</button>
+    <h1>Please log in</h1>
+    <form id="LoginSelectUser">
+        <!-- dropdown -->
+        <select name="Mitarbeiter_Id" id="mitarbeiterDropdown">
+            <!-- Dropdown options will be populated dynamically using JavaScript -->
+        </select><br>
+        <button type="button" id="welcome">App Starten</button>
+    </form>
 </form>
-<div id="ticketList"></div>
 <script src="js/index.js" type="module"></script>
 <script src="js/common.js" type="module"></script>
 </body>

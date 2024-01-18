@@ -26,7 +26,7 @@ export function readJsonObjFromFile(filename) {
         console.log(filename, "nicht gefunden");
     } else {
         console.log(filename, "im internen Speicher: ", JSON.parse(JSON.stringify(currentFile)));
-        console.log("Anzahl an Einträgen: ", Object.keys(currentFile).length);
+        //console.log("Anzahl an Einträgen: ", Object.keys(currentFile).length);
         return (JSON.parse(currentFile));
     };
 };
@@ -62,7 +62,6 @@ export async function fullServerLoad() {
         try {
             const response = await fetch(server + call);
             const data = await response.json();
-            // console.log(response);
             console.log( filename, 'erfolgreich vom Server geholt', JSON.stringify(data));
             saveJsonObjToFile(data, filename);
         } catch (error) {

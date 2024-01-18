@@ -1,3 +1,4 @@
+
 document.getElementById('createTicket').addEventListener('click', function() {
     document.location.href = 'ticket_create.html'
 });
