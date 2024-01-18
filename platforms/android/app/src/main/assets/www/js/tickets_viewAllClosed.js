@@ -1,37 +1,37 @@
-// start script when opening html
-window.onload =  async function() {
-    await loadClosedTickets();
- };
-// test
-async function loadClosedTickets() {
+import * as common from './common.js';
+
+window.onload = async function () {
+    await createCards();
+};
+
+// reading tickets from localstorage
+async function createCards() {
     try {
-        const response = await fetch('http://10.0.2.2:3000/getClosedTickets');
-        //const response = await fetch('http://localhost:3000/getClosedTickets');
-        const tickets = await response.json();
+        const localtickets = common.readJsonObjFromFile('tickets');
+        if (localtickets && Array.isArray(localtickets)) {
+            const ticketListDiv = document.getElementById('tickets');
 
-        
-        const ticketListDiv = document.getElementById('ticketList');
-        ticketListDiv.innerHTML = '';
-
-        tickets.forEach(ticket => {
-            const ticketInfo = document.createElement('div');
-            ticketInfo.classList.add('ticketInfo'); 
-            ticketInfo.innerHTML = `
-            <form id="ticketForm">
-                <p>Support Team: ${ticket.SupportTeam}</p>
-                <p>Ticket eingegeben am: ${ticket.DateAdded}</p>
-                <p>Ticket geschlossen am: ${ticket.DateClosed}</p>
-                <p>Beschreibung des Tickets: ${ticket.Beschreibung}</p>
-                <p>Eingegeben von: ${ticket.Nachname} ${ticket.Vorname}</p>
-                <p>Art des Problems: ${ticket.ProblemKat}</p>
-                <p>Dringlickeit: ${ticket.Dringlichkeit}</p>
-            </form>
-            `;
-            ticketListDiv.appendChild(ticketInfo);
-        });
-
+            localtickets.forEach(ticket => {
+                if ( ticket.StatusTicketId == 2) {
+                    const ticketinfo = document.createElement('div');
+                    ticketinfo.classList.add('ticketinfo');
+                    ticketinfo.innerHTML = `
+                        <form id="ticketForm">
+                            <p>Support Team: ${ticket.MitarbeiterId}</p>
+                            <p>ProblemKategorie Id ${ticket.ProblemKategorieId}</p>
+                            <p>Dringlichkeit Id: ${ticket.DringlichkeitId}</p>
+                            <p>SupportTeamId: ${ticket.SupportTeamId}</p>
+                            <p>StatusTicket: ${ticket.StatusTicketId}</p>
+                            <p>Beschreibung: ${ticket.Beschreibung}</p>
+                            <p>DatumEingabe: ${ticket.DatumEingabe}</p>
+                            <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
+                        </form>
+                    `;
+                    ticketListDiv.appendChild(ticketinfo);
+                };
+            });
+        };
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
     }
-
 }

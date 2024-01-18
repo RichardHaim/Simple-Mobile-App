@@ -4,6 +4,7 @@ window.onload = async function () {
     await createCards();
 };
 
+// reading tickets from localstorage
 async function createCards() {
     try {
         const localtickets = common.readJsonObjFromFile('tickets');
