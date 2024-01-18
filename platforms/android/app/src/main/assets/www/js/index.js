@@ -41,7 +41,7 @@ function showLoadingPopup(show) {
     const body = document.querySelector('body');
     const loadingPopup = document.getElementById('loadingPopup');
     if (show) {
-        loadingPopup.style.display = 'block'; // Lade-Popup anzeigen
+        loadingPopup.style.display = 'block'; // load popup anzeigen
         body.classList.add('popup-active'); // Klasse 'popup-active' hinzufügen
     } else {
         loadingPopup.style.display = 'none'; // Lade-Popup ausblenden
