@@ -2,6 +2,11 @@ import * as common from './common.js';
 
 window.onload = async function () {
     await createCards();
+
+const editButtons = document.querySelectorAll(".editButton");
+    editButtons.forEach(button => {
+        button.addEventListener("click", handleEditTicket);
+    });
 };
 
 
@@ -42,13 +47,30 @@ async function createCards() {
                             <p>Beschreibung: ${ticket.Beschreibung}</p>
                             <p>DatumEingabe: ${ticket.DatumEingabe}</p>
                             <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
+                            <button class="editButton" data-ticket-id="${ticket.Id}">Ticket bearbeiten</button>
                         </form>
                     `;
                     ticketListDiv.appendChild(ticketinfo);
                 }
             });
         }
+
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
+    }
+}
+async function handleEditTicket(event) {
+    const ticketId = event.target.getAttribute("data-ticket-id");
+    window.location.href = `ticket_change.html?ticketId=${ticketId}`;
+}
+
+async function loadTicketData(ticketId) {
+    try {
+        const localtickets = common.readJsonObjFromFile('tickets');
+        const selectedTicket = localtickets.find(ticket => ticket.Id === ticketId);
+        return selectedTicket || null;
+    } catch (error) {
+        console.error('Fehler beim Laden der Ticketdaten:', error);
+        return null;
     }
 }
