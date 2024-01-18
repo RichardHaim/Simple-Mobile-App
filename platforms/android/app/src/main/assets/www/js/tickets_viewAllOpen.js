@@ -2,13 +2,7 @@ import * as common from './common.js';
 
 window.onload = async function () {
     await createCards();
-
-const editButtons = document.querySelectorAll(".editButton");
-    editButtons.forEach(button => {
-        button.addEventListener("click", handleEditTicket);
-    });
 };
-
 
 async function createCards() {
     try {
@@ -18,7 +12,7 @@ async function createCards() {
         const localtickets = common.readJsonObjFromFile('tickets');
         if (localtickets && Array.isArray(localtickets)) {
             const ticketListDiv = document.getElementById('tickets');
-
+            ticketListDiv.innerHTML = ''; // Inhalt leeren, um doppelte Einträge zu verhindern
 
             const mitarbeiterList = common.readJsonObjFromFile('mitarbeiter');
             const problemkategorieList = common.readJsonObjFromFile('problemkategorie');
@@ -28,7 +22,6 @@ async function createCards() {
 
             localtickets.forEach(ticket => {
                 if (ticket.StatusTicketId == 1) {
-
                     const mitarbeiter = mitarbeiterList.find(item => item.Id === ticket.MitarbeiterId);
                     const problemkategorie = problemkategorieList.find(item => item.Id === ticket.ProblemKategorieId);
                     const supportteam = supportteamList.find(item => item.Id === ticket.SupportTeamId);
@@ -51,23 +44,25 @@ async function createCards() {
                         </form>
                     `;
                     ticketListDiv.appendChild(ticketinfo);
-                    const editButtons = document.querySelectorAll(".editButton");
-                    editButtons.forEach(button => {
-                         button.addEventListener("click", handleEditTicket);
-                    });
                 }
             });
-        }
 
+            // Event-Listener für "editButton" nach dem Laden der Seite
+            attachEditButtonEventListeners();
+        }
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
     }
 }
 
-function handleEditTicket(event) {
-    const ticketId = event.target.getAttribute('data-ticket-id');
-    const ticketToEdit = common.readJsonObjFromFile('tickets').find(ticket => ticket.Id === ticketId);
-
-    // Logik um Ticket in neuem Interface zu bearbeiten
-    console.log('Editing ticket:', ticketToEdit);
+function EditButtonEventListeners() {
+    const editButtons = document.querySelectorAll('.editButton');
+    editButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const ticketId = event.target.getAttribute('data-ticket-id');
+            // Hier sollte zu "ticket_edit.html" navigiert werden
+            window.location.href = `ticket_edit.html?ticketId=${ticketId}`;
+        });
+    });
 }
+
