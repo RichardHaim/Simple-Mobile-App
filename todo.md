@@ -35,11 +35,12 @@ Implement dropdown dataload from local storage + make sure, that the data pushed
 during start, there should be some kind of popup to show the user that the app is loading data. This mechanic should also prevent the user from clicking any buttons.
 
 
+~~
 ## User carry-over
 Implement functionality, that the user selected at the login-page, is carried over to other pages/functions:
 - `home.html`, to be displayed on top instead of "user"
 - `ticket_create.html` to be automatically selected as 'Mitarbeiter' in a field, instead of a dropdown
-
+~~
 
 ## CSS
 Add all css commands in 1 css file + change references in all html. Make sure, that there are no overlapping commands (e.g. index.css and home.css contain different styles for the logo -> this should be adressed correctly)
