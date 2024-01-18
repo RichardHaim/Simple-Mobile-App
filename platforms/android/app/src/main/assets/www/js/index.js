@@ -19,6 +19,10 @@ window.addEventListener('load', async function() {
 
 // button -> App Starten
 document.getElementById('welcome').addEventListener('click', function() {
+    const userSelected = {
+        'Id': document.getElementById('mitarbeiterDropdown').value
+    };
+    common.saveJsonObjToFile(userSelected, 'currentuser');
     document.location.href = 'home.html'
 });
 
@@ -34,7 +38,7 @@ function fillDropdown() {
     mitarbeiterData.forEach(person => {
         const option = document.createElement('option');
         option.value = person.Id;
-        option.text = `${person.Nachname}, ${person.Vorname}`;
+        option.text = `${person.Nachname} ${person.Vorname}`;
         dropdown.add(option);
     });
 }

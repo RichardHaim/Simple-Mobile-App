@@ -2,7 +2,8 @@
     <head>
         <title>Ticket App</title>
         <link rel="stylesheet" href="css/ticket_create.css">
-        <script src="js/create_ticket.js"></script>
+        <script src="js/create_ticket.js" type="module"></script>
+        <script src="js/common.js" type="module"></script>
     </head>
     <body>
         <form id="createNewTicket_header">
@@ -49,15 +50,15 @@
             </select><br>
         </form>
 
+<!--
         <form id="createNewTicket_TicketStatus">
-            <!-- dropdown -->
-            <h2><label for="SupportTeamId_label">Choose SupportTeamId category:</label></h2><br>
+            <h2><label for="SupportTeamId_label">Choose TicketStatus category:</label></h2><br>
             <select name="TicketStatus_names" id="TicketStatusId_names">
                 <option value="1">Offen</option>
                 <option value="2">Geschlossen</option>
             </select><br>
         </form>
-
+-->
         <form id="createNewTicket_description">
             <h2><label for="description_label">Description:</label></h2>
             <textarea type="text" id="description_input" name="description_input" class="input-box" required></textarea><br>
