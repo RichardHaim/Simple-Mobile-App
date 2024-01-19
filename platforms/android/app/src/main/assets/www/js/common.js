@@ -49,6 +49,22 @@ export function readAllFiles() {
         console.log('reading done');
     };
 
+
+ export async function pushticket (payload) {
+     try {
+         const response = await fetch ('http://10.0.2.2:3000/CreateTicket', {
+             method: 'POST',
+             body: JSON.stringify (payload),
+             headers: {'Content-Type': 'application/json'}
+         });
+        const result = await response;
+        console.log ("Success:", result);
+        alert('Ticket gespeichert');
+     } catch (error) {
+         console.error ('Fehler beim Upload der Tickets:', error);
+     }
+ };
+
 // Server-GET & speichern im localstorage
 // wenn nichts übergeben wird -> full load
 // wenn Tabellenname übergeben wird -> nur die Tabelle laden

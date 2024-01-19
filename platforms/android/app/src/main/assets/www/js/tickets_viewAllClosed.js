@@ -7,8 +7,8 @@ window.onload = async function () {
 
 async function createCards() {
     try {
-        const alltickets = common.readAllFiles();
-        console.log(alltickets)
+        //const alltickets = common.readAllFiles();
+        //console.log(alltickets)
 
         const localtickets = common.readJsonObjFromFile('tickets');
         if (localtickets && Array.isArray(localtickets)) {
@@ -34,6 +34,7 @@ async function createCards() {
                     ticketinfo.classList.add('ticketinfo');
                     ticketinfo.innerHTML = `
                         <form id="ticketForm">
+                            <p>Ticket: ${ticket.Ticketnummer}</p>
                             <p>Support Team: ${mitarbeiter ? `${mitarbeiter.Vorname} ${mitarbeiter.Nachname}` : 'N/A'}</p>
                             <p>ProblemKategorie: ${problemkategorie ? problemkategorie.Kategorie : 'N/A'}</p>
                             <p>Dringlichkeit: ${dringlichkeit ? dringlichkeit.Kategorie : 'N/A'}</p>

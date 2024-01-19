@@ -7,7 +7,7 @@ window.onload = function () {
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("submit_newTicket").addEventListener("click", async function() {
         const payload = getFieldInput();
-        await pushticket(payload);
+        await common.pushticket(payload);
         await common.serverLoad('tickets');
         document.location.href = 'home.html';
         //console.log(JSON.stringify(payload));
@@ -20,7 +20,7 @@ function getFieldInput () {
         'ProblemKategorieId': document.getElementById("problem_names").value,
         'DringlichkeitId': document.getElementById("dringlichkeitid_names").value,
         'SupportTeamId': document.getElementById("SupportTeamId_names").value,
-        'StatusTicketId': 1 //document.getElementById("TicketStatusId_names").value,
+        'StatusTicketId': 1, //document.getElementById("TicketStatusId_names").value,
         'Beschreibung': document.getElementById("description_input").value,
         'DatumEingabe': document.getElementById("datetime_input").value
         };
@@ -36,6 +36,7 @@ function getCurrentDateTime() {
     return formattedDateTime;
  };
 
+/*
  async function pushticket (payload) {
      try {
          const response = await fetch ('http://10.0.2.2:3000/CreateTicket', {
@@ -49,3 +50,4 @@ function getCurrentDateTime() {
          console.error ('Fehler beim Upload der Tickets:', error);
      }
  };
+ */

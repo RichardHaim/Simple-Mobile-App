@@ -1,6 +1,5 @@
 import * as common from './common.js';
 
-//window.onload = async function () {
 addEventListener ( 'load', async function () {
     console.log('onload für ticketdetails gestartet');
     const ticketId = getTicketIdFromUrl(); // Funktion um  Ticket-ID aus der URL zu extrahieren
@@ -24,8 +23,7 @@ window.onload = async function () {
 async function loadTicketData(ticketId) {
     try {
         const ticketData = await common.readJsonObjFromFile('tickets');
-        const ticket = ticketData.find(item => item.Id === ticketId);
-
+        const ticket = ticketData.find(item => item.Ticketnummer === Number(ticketId));
         if (ticket) {
             // formularfelder mit  Ticketdaten fuellen
             document.getElementById('description').value = ticket.Beschreibung;
@@ -43,4 +41,12 @@ async function loadTicketData(ticketId) {
     } catch (error) {
         console.error('Fehler beim Laden der Ticketdaten:', error);
     }
+}
+
+function getTicketIdFromUrl () {
+    const searchParams = new URLSearchParams(window.location.search);
+    for (const [key, value] of searchParams) {
+        if ( key == "ticketId" ) { return value };
+    };
+
 }
