@@ -61,7 +61,7 @@ Instances, where we check if the phone is online:
 
 
 ## queue
-In case the app is online, the following logic applies
+In case the app is offline, the following logic applies
 ### new tickets
 Save data to file `'newTicketsQUEUE'` (same format/content as table `'tickets'`). All tables loading data from table `'tickets'` also have to load data from table `'newTicketsQUEUE'`. Make sure, that the function does not return an error if the table `'newTicketsQUEUE'` is empty.<br>
 Once the app is online, all entries in `'newTicketsQUEUE'` need to be pushed to the server
