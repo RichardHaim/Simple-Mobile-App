@@ -1,3 +1,40 @@
+/* Funktionenn die verfügbar sind:
+
+onlinechecker()
+    returns true if online, false if offline
+
+readJsonObjFromFile(filename)
+    single-read only. filename mandatory
+
+saveJsonObjToFile(file, filename)
+    single-save only. file in JSON-format.
+
+readAllFiles()
+    liest alle files aus, die in const tables definiert sind
+
+pushticket (payload)
+    payload mandatory. PUSH command für alle Daten aus payload nach tickets
+
+serverLoad(table)
+    wenn keine table (= name der tabelle im localstorage): GET von allen tabellen aus tables
+    wenn table übergeben, wird nur diese vom server geladen
+
+getCurrentUser()
+    übergibt den Id des aktuellen Users (per Auswahl von index)
+
+fillDropdown(lookingfor, dropdownId)
+    befüllt dropdowns automatisch. übergeben werden muss:
+        lookingfor -> zu befüllende Information, laut elementMappings in der Funktion (=name der tabelle im localstorage)
+        dropdownId -> Id von <select> im HTML
+
+getCurrentDateTime()
+    selbsterklärend
+
+offlinePopup()
+    selbsterklärend
+
+*/
+
 
 // Definition aller Tabellen im internen Speicher
 const tables = ["tickets",
@@ -134,29 +171,6 @@ export function getCurrentUser() {
       );
 };
 
-
-/*
-export function fillDropdown(lookingfor, dropdownId) {
-     const elements = {
-        'mitarbeiter': `${item.Nachname} ${item.Vorname}`,
-        'problemkategorie' : `item.Kategorie`,
-        'supportteam' : `item.Team`,
-        'ticketstatus': `item.Status`,
-        'dringlichkeit': `item.Kategorie`
-    };
-
-    for ( const [element, entry] of Object.entries(elements)) {
-        if ( element == lookingfor ) {
-            const data = readJsonObjFromFile(lookingfor);
-            const dropdown = document.getElementById(dropdownId);
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.Id;
-                option.text = entry;
-                dropdown.add(option);
-            });
-}}};
-*/
 
 export function fillDropdown(lookingfor, dropdownId) {
     const elementMappings = {
