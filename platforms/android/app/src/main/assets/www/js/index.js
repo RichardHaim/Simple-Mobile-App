@@ -6,7 +6,7 @@ window.addEventListener('load', async function() {
     showLoadingPopup(true); // anzeigen des load pop ups wenn daten laden
     await common.serverLoad();
     showLoadingPopup(false); // verstecken des load pop ups wenn daten geladen wurden
-    fillDropdown();
+    common.fillDropdown('mitarbeiter', 'mitarbeiterDropdown');
 });
 
 
@@ -19,22 +19,6 @@ document.getElementById('welcome').addEventListener('click', function() {
     document.location.href = 'home.html'
 });
 
-
-function fillDropdown() {
-    // Get data from localStorage
-    const mitarbeiterData = common.readJsonObjFromFile('mitarbeiter');
-
-    // Get the dropdown element
-    const dropdown = document.getElementById('mitarbeiterDropdown');
-
-    // Populate the dropdown with options
-    mitarbeiterData.forEach(person => {
-        const option = document.createElement('option');
-        option.value = person.Id;
-        option.text = `${person.Nachname} ${person.Vorname}`;
-        dropdown.add(option);
-    });
-}
 
 // Funktion zum Anzeigen oder Ausblenden eines Lade-Popups
 function showLoadingPopup(show) {

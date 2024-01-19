@@ -1,3 +1,40 @@
+/* Funktionenn die verfügbar sind:
+
+onlinechecker()
+    returns true if online, false if offline
+
+readJsonObjFromFile(filename)
+    single-read only. filename mandatory
+
+saveJsonObjToFile(file, filename)
+    single-save only. file in JSON-format.
+
+readAllFiles()
+    liest alle files aus, die in const tables definiert sind
+
+pushticket (payload)
+    payload mandatory. PUSH command für alle Daten aus payload nach tickets
+
+serverLoad(table)
+    wenn keine table (= name der tabelle im localstorage): GET von allen tabellen aus tables
+    wenn table übergeben, wird nur diese vom server geladen
+
+getCurrentUser()
+    übergibt den Id des aktuellen Users (per Auswahl von index)
+
+fillDropdown(lookingfor, dropdownId)
+    befüllt dropdowns automatisch. übergeben werden muss:
+        lookingfor -> zu befüllende Information, laut elementMappings in der Funktion (=name der tabelle im localstorage)
+        dropdownId -> Id von <select> im HTML
+
+getCurrentDateTime()
+    selbsterklärend
+
+offlinePopup()
+    selbsterklärend
+
+*/
+
 
 // Definition aller Tabellen im internen Speicher
 const tables = ["tickets",
@@ -133,6 +170,42 @@ export function getCurrentUser() {
           function(mitarbeiterData){ return mitarbeiterData.Id == storedId }
       );
 };
+
+
+export function fillDropdown(lookingfor, dropdownId) {
+    const elementMappings = {
+        'mitarbeiter': ['Nachname', 'Vorname'],
+        'problemkategorie': ['Kategorie'],
+        'supportteam': ['Team'],
+        'ticketstatus': ['Status'],
+        'dringlichkeit': ['Kategorie']
+    };
+
+    const data = readJsonObjFromFile(lookingfor);
+    const dropdown = document.getElementById(dropdownId);
+
+    data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.Id;
+
+        if (elementMappings[lookingfor]) {
+            const textContent = elementMappings[lookingfor].map(prop => item[prop]).join(' ');
+            option.text = textContent;
+        }
+
+        dropdown.add(option);
+    });
+}
+
+
+export function getCurrentDateTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = (now.getMonth() + 1).toString().padStart(2, '0');
+    var day = now.getDate().toString().padStart(2, '0');
+    var formattedDateTime = `${year}-${month}-${day}`;
+    return formattedDateTime;
+ };
 
 
 export function offlinePopup() {

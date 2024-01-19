@@ -1,7 +1,8 @@
 import * as common from './common.js';
 
 window.onload = function () {
-    datetime_input.value = getCurrentDateTime();
+    //datetime_input.value = common.getCurrentDateTime();
+    fillUpDropdowns();
 };
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -25,16 +26,13 @@ function getFieldInput () {
         'SupportTeamId': document.getElementById("SupportTeamId_names").value,
         'StatusTicketId': 1, //document.getElementById("TicketStatusId_names").value,
         'Beschreibung': document.getElementById("description_input").value,
-        'DatumEingabe': document.getElementById("datetime_input").value
+        'DatumEingabe': common.getCurrentDateTime() //document.getElementById("datetime_input").value
         };
     return payload;
 };
 
-function getCurrentDateTime() {
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = (now.getMonth() + 1).toString().padStart(2, '0');
-    var day = now.getDate().toString().padStart(2, '0');
-    var formattedDateTime = `${year}-${month}-${day}`;
-    return formattedDateTime;
- };
+function fillUpDropdowns () {
+    common.fillDropdown('problemkategorie', 'problem_names');
+    common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
+    common.fillDropdown('supportteam', 'SupportTeamId_names');
+}
