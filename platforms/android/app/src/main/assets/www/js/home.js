@@ -1,7 +1,8 @@
 import * as common from './common.js';
 
 window.onload = function () {
-    const userInStorage = greetMe();
+    const userInStorage = common.getCurrentUser();
+    console.log(userInStorage);
     document.getElementById('userGreeting').innerHTML = 'Willkommen, ' + userInStorage[0].Vorname;
 };
 
@@ -17,14 +18,3 @@ document.getElementById('viewOpenTickets').addEventListener('click', function() 
 document.getElementById('viewClosedTickets').addEventListener('click', function() {
     document.location.href = 'tickets_viewAllClosed.html'
 });
-
-function greetMe () {
-    // read currently logged in id from user
-    const storedId = common.readJsonObjFromFile('currentuser').Id;
-    // find userId in table mitarbeiter
-    const mitarbeiterData = common.readJsonObjFromFile('mitarbeiter');
-      return mitarbeiterData.filter(
-          function(mitarbeiterData){ return mitarbeiterData.Id == storedId }
-      );
-
-}

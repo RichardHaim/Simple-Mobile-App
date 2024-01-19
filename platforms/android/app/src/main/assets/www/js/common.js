@@ -121,7 +121,18 @@ export async function serverLoad(table) {
         offlinePopup();
         };
     };
-}
+};
+
+export function getCurrentUser() {
+    // read currently logged in id from user
+    const storedId = readJsonObjFromFile('currentuser').Id;
+    // find userId in table mitarbeiter
+    const mitarbeiterData = readJsonObjFromFile('mitarbeiter');
+      return mitarbeiterData.filter(
+          function(mitarbeiterData){ return mitarbeiterData.Id == storedId }
+      );
+};
+
 
 export function offlinePopup() {
       var popup = document.createElement('div');
