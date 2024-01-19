@@ -1,7 +1,8 @@
 import * as common from './common.js';
 
 window.onload = function () {
-    datetime_input.value = getCurrentDateTime();
+    datetime_input.value = common.getCurrentDateTime();
+    fillUpDropdowns();
 };
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -30,6 +31,7 @@ function getFieldInput () {
     return payload;
 };
 
+/*
 function getCurrentDateTime() {
     var now = new Date();
     var year = now.getFullYear();
@@ -38,3 +40,9 @@ function getCurrentDateTime() {
     var formattedDateTime = `${year}-${month}-${day}`;
     return formattedDateTime;
  };
+*/
+ function fillUpDropdowns () {
+    common.fillDropdown('problemkategorie', 'problem_names');
+    common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
+    common.fillDropdown('supportteam', 'SupportTeamId_names');
+ }

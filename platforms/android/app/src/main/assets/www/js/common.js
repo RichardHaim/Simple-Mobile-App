@@ -184,6 +184,15 @@ export function fillDropdown(lookingfor, dropdownId) {
 }
 
 
+export function getCurrentDateTime() {
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = (now.getMonth() + 1).toString().padStart(2, '0');
+    var day = now.getDate().toString().padStart(2, '0');
+    var formattedDateTime = `${year}-${month}-${day}`;
+    return formattedDateTime;
+ };
+
 
 export function offlinePopup() {
       var popup = document.createElement('div');
