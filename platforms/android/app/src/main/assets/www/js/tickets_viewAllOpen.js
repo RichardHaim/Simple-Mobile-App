@@ -61,6 +61,7 @@ function EditButtonEventListeners() {
     const editButtons = document.querySelectorAll('.editButton');
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
+            event.preventDefault();
             const ticketId = event.target.getAttribute('data-ticket-id');
             // Hier sollte zu "ticket_edit.html" navigiert werden
             window.location.href = 'ticket_edit.html?ticketId='+ticketId;

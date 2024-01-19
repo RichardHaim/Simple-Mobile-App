@@ -1,5 +1,6 @@
 import * as common from './common.js';
 
+//window.onload = async function () {
 addEventListener ( 'load', async function () {
     console.log('onload für ticketdetails gestartet');
     const ticketId = getTicketIdFromUrl(); // Funktion um  Ticket-ID aus der URL zu extrahieren
