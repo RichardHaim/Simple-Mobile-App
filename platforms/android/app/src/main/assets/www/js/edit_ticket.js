@@ -9,6 +9,26 @@ addEventListener ( 'load', async function () {
         alert('Ticket-ID wurde nicht gefunden.');
     }
 });
+window.addEvenListener("DOMContentLoaded", (event) => {
+    document.getElementById("submit_updatedTicket").addEventListener("click", async function() {
+        const payload = getFieldInput();
+        await common.updateticket(payload)
+    })
+})
+
+function getFieldInput (ticketId) {
+    const payload = {
+        'Ticketnummer' : ticketId,
+        'ProblemKategorieId': document.getElementById("problem_names").value,
+        'DringlichkeitId': document.getElementById("dringlichkeitid_names").value,
+        'SupportTeamId': document.getElementById("SupportTeamId_names").value,
+        'StatusTicketId': document.getElementById("TicketStatusId_names").value,
+        'Beschreibung': document.getElementById("description_input").value
+        };
+    return payload;
+};
+
+
 
 async function loadTicketData(ticketId) {
     try {
@@ -35,13 +55,13 @@ async function loadTicketData(ticketId) {
         console.error('Fehler beim Laden der Ticketdaten:', error);
     }
 }
-
+/*
 function fillUpDropdowns () {
     common.fillDropdown('problemkategorie', 'problem_names');
     common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
     common.fillDropdown('supportteam', 'SupportTeamId_names');
 }
-
+*/
 
 function getTicketIdFromUrl () {
     const searchParams = new URLSearchParams(window.location.search);
