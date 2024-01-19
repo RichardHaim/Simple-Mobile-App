@@ -6,8 +6,8 @@ window.onload = async function () {
 
 async function createCards() {
     try {
-        const alltickets = common.readAllFiles();
-        console.log(alltickets)
+        //const alltickets = common.readAllFiles();
+        //console.log('laden von alltickets abgeschlossen', alltickets);
 
         const localtickets = common.readJsonObjFromFile('tickets');
         if (localtickets && Array.isArray(localtickets)) {
@@ -48,7 +48,8 @@ async function createCards() {
             });
 
             // Event-Listener für "editButton" nach dem Laden der Seite
-            attachEditButtonEventListeners();
+            //attachEditButtonEventListeners();
+            EditButtonEventListeners();
         }
     } catch (error) {
         console.error('Fehler beim Laden der Tickets:', error);
@@ -60,6 +61,7 @@ function EditButtonEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const ticketId = event.target.getAttribute('data-ticket-id');
+            console.log('editbuttoneventlisteners ticketId =', ticketId);
             // Hier sollte zu "ticket_edit.html" navigiert werden
             window.location.href = `ticket_edit.html?ticketId=${ticketId}`;
         });

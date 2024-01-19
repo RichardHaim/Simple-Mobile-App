@@ -46,6 +46,7 @@ export function readAllFiles() {
         while (i < tables.length) {
             readJsonObjFromFile(tables[i]);
             i++};
+        console.log('reading done');
     };
 
 // Server-GET & speichern im localstorage
