@@ -61,6 +61,55 @@ Save a) old state of ticket, and b) new state of ticket to `'changeTicketsQUEUE'
 - if no: Popup that informs user that there are differences + let them decide if they want to discard (delete entry from `'changeTicketsQUEUE'`), or if they want to edit. In case of edit: jump to new page -> fill in current state on server (in fields that cannot be edited) + new state from `'changeTicketsQUEUE'` (in fields that can be edited). Provide "Discard" and "Submit" button. Discard will delete the entry from `'changeTicketsQUEUE'` without push, "Submit" will post the changes to the server + delete from `'changeTicketsQUEUE'`.
 This logic is applicable for all entries in `'changeTicketsQUEUE'`.
 
+`queue` brainstorming
+```
+queue:
+	{
+	"Ticketnummer" : 2,
+	valuesBeforeChange :
+		{
+		"Ticketnummer":2,"MitarbeiterId":1,"ProblemKategorieId":1,"DringlichkeitId":2,"SupportTeamId":1,"StatusTicketId":1,"Beschreibung":"Computer startet nicht mehr","DatumEingabe":"2023-01-15T00:00:00.000Z","DatumAbschluss":null
+		},
+	valuesAfterChange :
+		{
+		"Ticketnummer":2,"MitarbeiterId":1,"ProblemKategorieId":1,"DringlichkeitId":3,"SupportTeamId":2,"StatusTicketId":1,"Beschreibung":"Computer startet nicht mehr","DatumEingabe":"2023-01-15T00:00:00.000Z","DatumAbschluss":null
+		}
+	},
+	{
+	"Ticketnummer" : 3,
+	valuesBeforeChange :
+		{
+		"Ticketnummer":2,"MitarbeiterId":1,"ProblemKategorieId":1,"DringlichkeitId":2,"SupportTeamId":1,"StatusTicketId":1,"Beschreibung":"Computer startet nicht mehr","DatumEingabe":"2023-01-15T00:00:00.000Z","DatumAbschluss":null
+		},
+	valuesAfterChange :
+		{
+		"Ticketnummer":2,"MitarbeiterId":1,"ProblemKategorieId":1,"DringlichkeitId":3,"SupportTeamId":2,"StatusTicketId":1,"Beschreibung":"Computer startet nicht mehr","DatumEingabe":"2023-01-15T00:00:00.000Z","DatumAbschluss":null
+		}
+	}
+
+
+
+
+
+Logik (wenn online)
+
+>> valuesBeforeChange == dbo.Tickets WHERE Ticketnummer = 2
+>> TRUE : push
+>> FALSE : meldung + changescreen für push
+
+for each ticketnummer in queue
+changescreen für push:
+	serverload für tickets + befüllen (non-editable)
+	valuesAfterChange + befüllen (editable)
+abbruch // submit
+
+submit
+->> push valuesAfterChange (in changescreen)
+->> delete entry from queue
+
+abbruch
+->> delete entry form queue
+```
 
 # Erledigt
 ## User carry-over
