@@ -287,12 +287,17 @@ app.get('/getOpenTickets', async (req, res) => {
               return res.status(400).send('All fields are required');
           }
 
-
           const result = await poolConnection.request().query(`
-          UPDATE [dbo].[Tickets] SET MitarbeiterId = ${MitarbeiterId, ProblemKategorieId = ${ProblemKategorieId}, DringlichkeitId = ${DringlichkeitId}, SupportTeamId = ${SupportTeamId},
-           StatusTicketId = ${StatusTicketId},
-           Beschreibung = '${Beschreibung}'
-           WHERE Ticketnummer = ${Ticketnummer, 126`);
+              UPDATE [dbo].[Tickets]
+              SET
+                  MitarbeiterId = ${MitarbeiterId},
+                  ProblemKategorieId = ${ProblemKategorieId},
+                  DringlichkeitId = ${DringlichkeitId},
+                  SupportTeamId = ${SupportTeamId},
+                  StatusTicketId = ${StatusTicketId},
+                  Beschreibung = '${Beschreibung}'
+              WHERE Ticketnummer = ${Ticketnummer};
+          `);
 
           console.log('Ticket successfully updated');
           res.status(201).send('Ticket successfully updated');
