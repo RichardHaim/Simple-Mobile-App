@@ -88,7 +88,7 @@ export function readAllFiles() {
 
 export async function updateticket (payload) {
     try {
-        const response = await fetch ('http://10.0.2.2:3000/updateTicket', {
+        const response = await fetch ('http://10.0.2.2:3000/UpdateTicket', {
             method: 'POST',
             body: JSON.stringify (payload),
             headers: {'Content-Type': 'application/json'}
