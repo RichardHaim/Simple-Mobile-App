@@ -32,6 +32,7 @@ async function createCards() {
                     ticketinfo.classList.add('ticketinfo');
                     ticketinfo.innerHTML = `
                         <form id="ticketForm">
+                            <p>Ticket-Nummer: ${ticket.Ticketnummer}</p>
                             <p>Support Team: ${mitarbeiter ? `${mitarbeiter.Vorname} ${mitarbeiter.Nachname}` : 'N/A'}</p>
                             <p>ProblemKategorie: ${problemkategorie ? problemkategorie.Kategorie : 'N/A'}</p>
                             <p>Dringlichkeit: ${dringlichkeit ? dringlichkeit.Kategorie : 'N/A'}</p>
@@ -40,7 +41,7 @@ async function createCards() {
                             <p>Beschreibung: ${ticket.Beschreibung}</p>
                             <p>DatumEingabe: ${ticket.DatumEingabe}</p>
                             <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
-                            <button class="editButton" data-ticket-id="${ticket.Id}">Ticket bearbeiten</button>
+                            <button class="editButton" data-ticket-id=${ticket.Ticketnummer}>Ticket bearbeiten</button>
                         </form>
                     `;
                     ticketListDiv.appendChild(ticketinfo);
@@ -61,9 +62,10 @@ function EditButtonEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const ticketId = event.target.getAttribute('data-ticket-id');
-            console.log('editbuttoneventlisteners ticketId =', ticketId);
+            console.log('Ticketnummer angeklickt =', ticketId);
             // Hier sollte zu "ticket_edit.html" navigiert werden
-            window.location.href = `ticket_edit.html?ticketId=${ticketId}`;
+            //window.location.href = "ticket_edit.html?ticketId=${ticketId}";
+            window.location.href = "ticket_edit.html";
         });
     });
 }
