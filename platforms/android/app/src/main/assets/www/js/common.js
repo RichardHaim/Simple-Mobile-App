@@ -86,7 +86,7 @@ export function readAllFiles() {
         console.log('reading done');
     };
 
-export async function updateticket (payload) {
+export async function updateTicket (payload) {
     try {
         const response = await fetch ('http://10.0.2.2:3000/UpdateTicket', {
             method: 'POST',

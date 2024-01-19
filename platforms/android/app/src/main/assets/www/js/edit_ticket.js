@@ -1,6 +1,6 @@
 import * as common from './common.js';
 
-addEventListener ( 'load', async function () {
+addEventListener('load', async function () {
     console.log('onload für ticketdetails gestartet');
     const ticketId = getTicketIdFromUrl(); // Funktion um  Ticket-ID aus der URL zu extrahieren
     if (ticketId) {
@@ -9,26 +9,28 @@ addEventListener ( 'load', async function () {
         alert('Ticket-ID wurde nicht gefunden.');
     }
 });
-window.addEvenListener("DOMContentLoaded", (event) => {
-    document.getElementById("submit_updatedTicket").addEventListener("click", async function() {
-        const payload = getFieldInput();
-        await common.updateticket(payload)
-    })
-})
 
-function getFieldInput (ticketId) {
+window.addEventListener("DOMContentLoaded", (event) => {
+    document.getElementById("submit_updatedTicket").addEventListener("click", async function () {
+        const payload = getFieldInput();
+        console.log(JSON.stringify(payload));
+        await common.updateTicket(payload);
+    });
+});
+
+function getFieldInput() {
+    const ticketId = getTicketIdFromUrl();
     const payload = {
-        'Ticketnummer' : ticketId,
+        'Ticketnummer': ticketId,
+        'MitarbeiterId': document.getElementById("mitarbeiter_id").value,
         'ProblemKategorieId': document.getElementById("problem_names").value,
         'DringlichkeitId': document.getElementById("dringlichkeitid_names").value,
         'SupportTeamId': document.getElementById("SupportTeamId_names").value,
         'StatusTicketId': document.getElementById("TicketStatusId_names").value,
         'Beschreibung': document.getElementById("description_input").value
-        };
+    };
     return payload;
-};
-
-
+}
 
 async function loadTicketData(ticketId) {
     try {
@@ -42,10 +44,8 @@ async function loadTicketData(ticketId) {
             document.getElementById('problem_names').value = ticket.ProblemKategorieId;
             document.getElementById('mitarbeiter_id').value = ticket.MitarbeiterId;
 
-
             document.getElementById('editTicketForm').addEventListener('submit', function (event) {
                 event.preventDefault();
-
                 alert('Änderungen gespeichert!');
             });
         } else {
@@ -55,18 +55,10 @@ async function loadTicketData(ticketId) {
         console.error('Fehler beim Laden der Ticketdaten:', error);
     }
 }
-/*
-function fillUpDropdowns () {
-    common.fillDropdown('problemkategorie', 'problem_names');
-    common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
-    common.fillDropdown('supportteam', 'SupportTeamId_names');
-}
-*/
 
-function getTicketIdFromUrl () {
+function getTicketIdFromUrl() {
     const searchParams = new URLSearchParams(window.location.search);
     for (const [key, value] of searchParams) {
-        if ( key == "ticketId" ) { return value };
-    };
-
+        if (key == "ticketId") { return value; }
+    }
 }
