@@ -9,17 +9,7 @@ addEventListener ( 'load', async function () {
         alert('Ticket-ID wurde nicht gefunden.');
     }
 });
-/*
-window.onload = async function () {
-    console.log('onload für ticketdetails gestartet');
-    const ticketId = getTicketIdFromUrl(); // Funktion um  Ticket-ID aus der URL zu extrahieren
-    if (ticketId) {
-        await loadTicketData(ticketId);
-    } else {
-        alert('Ticket-ID wurde nicht gefunden.');
-    }
-};
-*/
+
 async function loadTicketData(ticketId) {
     try {
         const ticketData = await common.readJsonObjFromFile('tickets');
@@ -45,6 +35,13 @@ async function loadTicketData(ticketId) {
         console.error('Fehler beim Laden der Ticketdaten:', error);
     }
 }
+
+function fillUpDropdowns () {
+    common.fillDropdown('problemkategorie', 'problem_names');
+    common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
+    common.fillDropdown('supportteam', 'SupportTeamId_names');
+}
+
 
 function getTicketIdFromUrl () {
     const searchParams = new URLSearchParams(window.location.search);

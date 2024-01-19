@@ -266,6 +266,47 @@ app.get('/getOpenTickets', async (req, res) => {
       res.status(500).send('Interner Serverfehler');
     }
   });
+
+  app.post('/UpdateTicket', async (req, res) => {
+      try {
+          const poolConnection = await sql.connect(config);
+
+
+          const {
+              Ticketnummer,
+              MitarbeiterId,
+              ProblemKategorieId,
+              DringlichkeitId,
+              SupportTeamId,
+              StatusTicketId,
+              Beschreibung,
+          } = req.body;
+
+
+          if (!Ticketnummer || !MitarbeiterId || !ProblemKategorieId || !DringlichkeitId || !SupportTeamId || !StatusTicketId || !Beschreibung) {
+              return res.status(400).send('All fields are required');
+          }
+
+
+          const result = await poolConnection.request().query(`
+          UPDATE [dbo].[Tickets] SET MitarbeiterId = ${MitarbeiterId, ProblemKategorieId = ${ProblemKategorieId}, DringlichkeitId = ${DringlichkeitId}, SupportTeamId = ${SupportTeamId},
+           StatusTicketId = ${StatusTicketId},
+           Beschreibung = '${Beschreibung}'
+           WHERE Ticketnummer = ${Ticketnummer, 126`);
+
+          console.log('Ticket successfully created');
+          res.status(201).send('Ticket successfully created');
+
+
+          await sql.close();
+      } catch (err) {
+          console.error(err.message);
+          res.status(500).send('Internal Server Error');
+      }
+  });
+
+
+
   
   app.listen(port, () => {
     console.log(`Server läuft auf http://localhost:${port}`);
