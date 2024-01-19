@@ -59,7 +59,7 @@ export function readAllFiles() {
          });
         const result = await response;
         console.log ("Success:", result);
-        alert('Ticket gespeichert');
+        //alert('Ticket gespeichert');
      } catch (error) {
          console.error ('Fehler beim Upload der Tickets:', error);
      }
@@ -70,6 +70,7 @@ export function readAllFiles() {
 // wenn Tabellenname übergeben wird -> nur die Tabelle laden
 export async function serverLoad(table) {
     // Abfrage, ob wir online sind
+    console.log('haben wir speicher?', sessionStorage.getItem('dataDownloaded'));
     if (!sessionStorage.getItem('dataDownloaded')) {
         const currentStatus = await onlinechecker();
         // Perform download only on initial load
