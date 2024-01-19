@@ -25,11 +25,14 @@ async function loadTicketData(ticketId) {
         const ticketData = await common.readJsonObjFromFile('tickets');
         const ticket = ticketData.find(item => item.Ticketnummer === Number(ticketId));
         if (ticket) {
-            // formularfelder mit  Ticketdaten fuellen
-            document.getElementById('description').value = ticket.Beschreibung;
-            // einfach ein element vorerst zum testen
+            document.getElementById('TicketStatusId_names').value = ticket.StatusTicketId;
+            document.getElementById('SupportTeamId_names').value = ticket.SupportTeamId;
+            document.getElementById('dringlichkeitid_names').value = ticket.DringlichkeitId;
+            document.getElementById('description_input').value = ticket.Beschreibung;
+            document.getElementById('problem_names').value = ticket.ProblemKategorieId;
+            document.getElementById('mitarbeiter_id').value = ticket.MitarbeiterId;
 
-            // Event-Listener für  Formular
+
             document.getElementById('editTicketForm').addEventListener('submit', function (event) {
                 event.preventDefault();
 

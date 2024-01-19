@@ -1,34 +1,68 @@
-<!-- Edit Ticket Form -->
 <html>
 <head>
-    <title>Edit Ticket</title>
-    <link rel="stylesheet" href="css/ticket_edit.css">
-</head>
-    <body>
-    <h2>Edit Ticket</h2>
-    <form id="editTicketForm">
-        <label for="supportTeam">Support Team:</label>
-        <input type="text" id="supportTeam" name="supportTeam"><br><br>
-
-        <label for="problemCategory">Problem Kategorie:</label>
-        <input type="text" id="problemCategory" name="problemCategory"><br><br>
-
-        <label for="urgency">Dringlichkeit:</label>
-        <input type="text" id="urgency" name="urgency"><br><br>
-
-        <label for="supportTeam">Support Team:</label>
-        <input type="text" id="supportTeamLevel" name="supportTeamLevel"><br><br>
-
-        <label for="urgency">Status Ticket:</label>
-        <input type="text" id="statusTicket" name="statusTicket"><br><br>
-
-        <label for="description">Beschreibung:</label>
-        <input type="text" id="description" name="description"><br><br>
-
-        <input type="submit" value="Save Changes">
-    </form>
-    <!-- <script src="js/tickets_viewAllOpen.js" type="module"></script> -->
-    <script src="js/common.js" type="module"></script>
     <script src="js/edit_ticket.js" type="module"></script>
-    </body>
+    <script src="js/common.js" type="module"></script>
+</head>
+<body>
+<form id="editticket_header">
+    <h1>Create New Ticket</h1>
+</form>
+<form id="EditTicket_mitarbeiterid">
+    <h2><label for="employee_dropdown">Choose Employee</label></h2><br>
+    <select name="Mitarbeiter_Id" id="mitarbeiter_id">
+        <option value="1">Mitarbeiter 1</option>
+        <option value="2">Mitarbeiter 2</option>
+        <option value="3">Mitarbeiter 3</option>
+    </select><br>
+</form>
+<form id="EditTicket_problemkategorieid">
+    <!-- dropdown -->
+    <h2><label for="problem_label">Choose problem category:</label></h2><br>
+    <select name="problem_names" id="problem_names">
+        <option value="1">Problemkategorie 1</option>
+        <option value="2">Problemkategorie 2</option>
+        <option value="3">Problemkategorie 3</option>
+    </select><br>
+</form>
+
+<form id="EditTicket_dringlichkeitid">
+    <!-- dropdown -->
+    <h2><label for="dringlichkeit_label">Choose dringlichkeit category:</label></h2><br>
+    <select name="dringlichkeitid_names" id="dringlichkeitid_names">
+        <option value="1">dringlichkeitid 1</option>
+        <option value="2">dringlichkeitid 2</option>
+        <option value="3">dringlichkeitid 3</option>
+    </select><br>
+</form>
+
+<form id="EditTicket_SupportTeamId">
+    <!-- dropdown -->
+    <h2><label for="SupportTeamId_label">Choose SupportTeamId category:</label></h2><br>
+    <select name="SupportTeamId_names" id="SupportTeamId_names">
+        <option value="1">SupportTeamId 1</option>
+        <option value="2">SupportTeamId 2</option>
+        <option value="3">SupportTeamId 3</option>
+    </select><br>
+</form>
+
+
+<form id="EditTicket_TicketStatus">
+    <h2><label for="SupportTeamId_label">Choose TicketStatus category:</label></h2><br>
+    <select name="TicketStatus_names" id="TicketStatusId_names">
+        <option value="1">Offen</option>
+        <option value="2">Geschlossen</option>
+    </select><br>
+</form>
+
+<form id="EditTicket_description">
+    <h2><label for="description_label">Description:</label></h2>
+    <textarea type="text" id="description_input" name="description_input" class="input-box" required></textarea><br>
+</form>
+
+
+
+<button type="button" id="submit_newTicket">Submit</button>
+
+
+</body>
 </html>
