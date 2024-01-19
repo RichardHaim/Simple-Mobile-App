@@ -86,6 +86,21 @@ export function readAllFiles() {
         console.log('reading done');
     };
 
+export async function updateticket (payload) {
+    try {
+        const response = await fetch ('http://10.0.2.2:3000/updateTicket', {
+            method: 'POST',
+            body: JSON.stringify (payload),
+            headers: {'Content-Type': 'application/json'}
+        });
+        const result = await response;
+        console.log("Success:", result);
+    } catch (error) {
+        console.error ('Fehler beim Updaten des Tickets:', error)
+    }
+};
+
+
 
  export async function pushticket (payload) {
      try {

@@ -294,8 +294,8 @@ app.get('/getOpenTickets', async (req, res) => {
            Beschreibung = '${Beschreibung}'
            WHERE Ticketnummer = ${Ticketnummer, 126`);
 
-          console.log('Ticket successfully created');
-          res.status(201).send('Ticket successfully created');
+          console.log('Ticket successfully updated');
+          res.status(201).send('Ticket successfully updated');
 
 
           await sql.close();
