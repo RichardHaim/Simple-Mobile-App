@@ -135,6 +135,56 @@ export function getCurrentUser() {
 };
 
 
+/*
+export function fillDropdown(lookingfor, dropdownId) {
+     const elements = {
+        'mitarbeiter': `${item.Nachname} ${item.Vorname}`,
+        'problemkategorie' : `item.Kategorie`,
+        'supportteam' : `item.Team`,
+        'ticketstatus': `item.Status`,
+        'dringlichkeit': `item.Kategorie`
+    };
+
+    for ( const [element, entry] of Object.entries(elements)) {
+        if ( element == lookingfor ) {
+            const data = readJsonObjFromFile(lookingfor);
+            const dropdown = document.getElementById(dropdownId);
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.Id;
+                option.text = entry;
+                dropdown.add(option);
+            });
+}}};
+*/
+
+export function fillDropdown(lookingfor, dropdownId) {
+    const elementMappings = {
+        'mitarbeiter': ['Nachname', 'Vorname'],
+        'problemkategorie': ['Kategorie'],
+        'supportteam': ['Team'],
+        'ticketstatus': ['Status'],
+        'dringlichkeit': ['Kategorie']
+    };
+
+    const data = readJsonObjFromFile(lookingfor);
+    const dropdown = document.getElementById(dropdownId);
+
+    data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.Id;
+
+        if (elementMappings[lookingfor]) {
+            const textContent = elementMappings[lookingfor].map(prop => item[prop]).join(' ');
+            option.text = textContent;
+        }
+
+        dropdown.add(option);
+    });
+}
+
+
+
 export function offlinePopup() {
       var popup = document.createElement('div');
       popup.style.position = 'fixed';
