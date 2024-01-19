@@ -62,11 +62,9 @@ function EditButtonEventListeners() {
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const ticketId = event.target.getAttribute('data-ticket-id');
-            console.log('Ticketnummer angeklickt =', ticketId);
             // Hier sollte zu "ticket_edit.html" navigiert werden
-            //window.location.href = "ticket_edit.html?ticketId=${ticketId}";
-            window.location.href = "ticket_edit.html";
+            window.location.href = 'ticket_edit.html?ticketId='+ticketId;
+            console.log(`ticket_edit.html?ticketId=${ticketId}`);
         });
     });
 }
-
