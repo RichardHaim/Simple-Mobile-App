@@ -1,3 +1,4 @@
+/* generelles Body layout*/
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -75,7 +76,7 @@ body.popup-active {
 
 
 
-
+/* Logo layout*/
 .logo_container {
     margin: 50px auto; /* Zentrierung des Formulars */
     text-align: center;
@@ -85,6 +86,8 @@ body.popup-active {
     height: 20%;
 }
 
+
+/* Formular layout*/
 form {
     max-width: 400px; /* Maximale Breite des Formulars für eine bessere Lesbarkeit */
     margin: 20px auto; /* Zentrierung des Formulars */
@@ -103,6 +106,7 @@ input, textarea {
     border-radius: 4px;
 }
 
+/* Button layout*/
 button {
     background-color: #4CAF50;
     color: white;
@@ -124,6 +128,7 @@ button:hover {
     padding: 10px;
 }
 
+/* Überschrift 1 layout*/
 h1 {
   position: relative;
   padding: 0;
@@ -170,16 +175,25 @@ h1 span {
 }
 
 
-/* dropdown css */
+/* Dropdown Style */
 .dropdown select {
     text-transform: capitalize;
     font-family: "Raleway", sans-serif;
-    font-size: 1.2em; /* Increase font size */
-    border: none; /* Remove the default border */
-    background-color: #fff; /* Background color for the dropdown */
-    color: #2d2f31; /* Text color */
-    width: 100%; /* Make the dropdown full width */
+    font-size: 1.2em; /* größere Schrift */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #2d2f31;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+    -moz-appearance: none; /* Remove default styling for Firefox */
+    appearance: none; /* Standard way to remove default styling */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* kleiner schatten */
+    cursor: pointer; /* hinweis clickable */
 }
+
+
 
 
 
