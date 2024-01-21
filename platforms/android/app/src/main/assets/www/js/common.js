@@ -70,6 +70,29 @@ export function readJsonObjFromFile(filename) {
 };
 
 
+export function appendJsonObjToFile(newData, filename) {
+    // Retrieve existing data from localStorage
+    const existingData = localStorage.getItem(filename);
+
+    // Parse the existing data (if it exists)
+    let currentData = existingData ? JSON.parse(existingData) : [];
+
+    // Ensure that currentData is an array
+    if (!Array.isArray(currentData)) {
+        // If it's not an array, handle it based on your use case.
+        // For example, you might replace the existing data with an array containing both old and new data.
+        currentData = [currentData];
+    }
+
+    // Append the new data to the existing data
+    currentData.push(newData);
+
+    // Save the updated data back to localStorage
+    localStorage.setItem(filename, JSON.stringify(currentData));
+    console.log(filename, 'erfolgreich aktualisiert');
+    readJsonObjFromFile(filename);
+}
+
 // speichern localstorage
 export function saveJsonObjToFile(file, filename) {
     localStorage.setItem(filename, JSON.stringify(file));

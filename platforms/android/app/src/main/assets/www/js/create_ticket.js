@@ -8,9 +8,16 @@ window.onload = function () {
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("submit_newTicket").addEventListener("click", async function() {
         const payload = getFieldInput();
-        sessionStorage.clear('dataDownloaded');
-        await common.pushticket(payload);
-        await common.serverLoad('tickets');
+        // if online: push to server, if offline: store in newTicketsQUEUE and push if online again
+        const online = await common.onlinechecker();
+        console.log(online);
+        if ( online ) {
+            sessionStorage.clear('dataDownloaded');
+            await common.pushticket(payload);
+            await common.serverLoad('tickets');
+        } else {
+            common.appendJsonObjToFile(payload, 'newTicketsQUEUE')
+        };
         document.location.href = 'home.html';
         //console.log(JSON.stringify(payload));
     });
