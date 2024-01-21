@@ -15,11 +15,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
             sessionStorage.removeItem('dataDownloaded');
             await common.pushticket(payload);
             await common.serverLoad('tickets');
+            alert('Neues Ticket erfolgreich hochgeladen');
         } else {
-            common.appendJsonObjToFile(payload, 'newTicketsQUEUE')
+            common.appendJsonObjToFile(payload, 'newTicketsQUEUE');
+            alert('Sie sind offline, Ihr Ticket wird hochgeladen, sobald Sie wieder online sind.');
         };
         document.location.href = 'home.html';
-        //console.log(JSON.stringify(payload));
     });
 });
 

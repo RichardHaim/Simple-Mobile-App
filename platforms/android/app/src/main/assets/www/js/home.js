@@ -31,5 +31,6 @@ async function pushNewTicketsWhenOnline() {
         localStorage.removeItem('newTicketsQUEUE');
         sessionStorage.removeItem('dataDownloaded');
         await common.serverLoad('tickets');
+        alert('Sie sind online! Alle neuen Tickets aus dem internen Speicher wurden erfolgreich hochgeladen');
     };
 };
