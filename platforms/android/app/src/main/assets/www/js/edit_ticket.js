@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const payload = getFieldInput();
         console.log(JSON.stringify(payload));
         await common.updateTicket(payload);
-        sessionStorage.clear('dataDownloaded');
+        sessionStorage.removeItem('dataDownloaded');
         await common.serverLoad('tickets');
         document.location.href = 'home.html';
         alert('Änderungen gespeichert!');

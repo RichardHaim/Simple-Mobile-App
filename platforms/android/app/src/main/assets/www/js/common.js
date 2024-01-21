@@ -147,9 +147,9 @@ export async function serverLoad(table) {
     // Abfrage, ob wir online sind
     console.log('haben wir speicher?', sessionStorage.getItem('dataDownloaded'));
     if (!sessionStorage.getItem('dataDownloaded')) {
-        const currentStatus = await onlinechecker();
+        const online = await onlinechecker();
         // Perform download only on initial load
-        if (currentStatus || performance.navigation.type === 1) {
+        if (online || performance.navigation.type === 1) {
             // Set the flag in session storage to indicate that data has been downloaded in this session
             sessionStorage.setItem('dataDownloaded', true);
 

@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const online = await common.onlinechecker();
         console.log(online);
         if ( online ) {
-            sessionStorage.clear('dataDownloaded');
+            sessionStorage.removeItem('dataDownloaded');
             await common.pushticket(payload);
             await common.serverLoad('tickets');
         } else {
