@@ -6,6 +6,17 @@ window.onload = function () {
     document.getElementById('userGreeting').innerHTML = 'Willkommen, ' + userInStorage[0].Vorname;
 };
 
+window.addEventListener("online", async function () {
+    const queueNotEmpty = localStorage.getItem('newTicketsQUEUE');
+    const online = await common.onlinechecker();
+    if ( queueNotEmpty !== null && online ) {
+        const payload = common.readJsonObjFromFile('newTicketsQUEUE');
+        payload.forEach(item => {
+            common.pushticket(item); });
+        localStorage.removeItem('newTicketsQUEUE');
+        await common.serverLoad('tickets');
+    };
+});
 
 document.getElementById('createTicket').addEventListener('click', function() {
     document.location.href = 'ticket_create.html'
