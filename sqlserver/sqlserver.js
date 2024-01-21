@@ -280,6 +280,7 @@ app.get('/getOpenTickets', async (req, res) => {
               SupportTeamId,
               StatusTicketId,
               Beschreibung,
+              DatumAbschluss
           } = req.body;
 
 
@@ -295,7 +296,8 @@ app.get('/getOpenTickets', async (req, res) => {
                   DringlichkeitId = ${DringlichkeitId},
                   SupportTeamId = ${SupportTeamId},
                   StatusTicketId = ${StatusTicketId},
-                  Beschreibung = '${Beschreibung}'
+                  Beschreibung = '${Beschreibung}',
+                  DatumAbschluss = '${DatumAbschluss}'
               WHERE Ticketnummer = ${Ticketnummer};
           `);
 
