@@ -1,6 +1,7 @@
 import * as common from './common.js';
 
 addEventListener('load', async function () {
+    fillUpDropdowns();
     console.log('onload für ticketdetails gestartet');
     const ticketId = getTicketIdFromUrl(); // Funktion um  Ticket-ID aus der URL zu extrahieren
     if (ticketId) {
@@ -64,4 +65,12 @@ function getTicketIdFromUrl() {
     for (const [key, value] of searchParams) {
         if (key == "ticketId") { return value; }
     }
+}
+
+function fillUpDropdowns () {
+    common.fillDropdown('mitarbeiter', 'mitarbeiter_id')
+    common.fillDropdown('problemkategorie', 'problem_names');
+    common.fillDropdown('dringlichkeit', 'dringlichkeitid_names');
+    common.fillDropdown('supportteam', 'SupportTeamId_names');
+    common.fillDropdown('ticketstatus','TicketStatusId_names');
 }
