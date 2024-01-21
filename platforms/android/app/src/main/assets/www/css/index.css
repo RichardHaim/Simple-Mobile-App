@@ -35,9 +35,49 @@ body.popup-active {
     overflow: hidden;
 }
 
+/* Popup-Ladeanimation Willkommenscreen */
+.lds {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #FFE27F;
+  animation: lds 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%, 100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+
+
 
 .logo_container {
-    margin: 60px auto; /* Zentrierung des Formulars */
+    margin: 50px auto; /* Zentrierung des Formulars */
     text-align: center;
 }
 
@@ -83,4 +123,63 @@ button:hover {
     border: 1px solid #ccc;
     padding: 10px;
 }
+
+h1 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  color: #080808;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+h1 span {
+  display: block;
+  font-size: 0.5em;
+  line-height: 1.3;
+}
+
+
+/* spezielles layout für startscreen*/
+.one h1 {
+  text-transform: capitalize;
+  margin-bottom: 30px
+}
+.one h1:before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 156px;
+  height: 2px;
+  content: "";
+  background-color: #4CAF50;
+}
+
+.one h1 span {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 3em;
+  padding-left: 0.25em;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* dropdown css */
+.dropdown select {
+    text-transform: capitalize;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2em; /* Increase font size */
+    border: none; /* Remove the default border */
+    background-color: #fff; /* Background color for the dropdown */
+    color: #2d2f31; /* Text color */
+    width: 100%; /* Make the dropdown full width */
+}
+
+
 
