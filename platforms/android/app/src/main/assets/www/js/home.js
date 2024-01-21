@@ -7,6 +7,26 @@ window.onload = function () {
     pushNewTicketsWhenOnline();
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to update online status
+    function updateOnlineStatus() {
+        var onlineStatusElement = document.getElementById('onlineStatus');
+
+        if (navigator.onLine) {
+            onlineStatusElement.textContent = 'Ihr Gerät ist Online';
+            onlineStatusElement.classList.remove('offline'); // Remove the 'offline' class
+        } else {
+            onlineStatusElement.textContent = 'Ihr Gerät ist Offline';
+            onlineStatusElement.classList.add('offline'); // Add the 'offline' class
+        }
+    }
+    // Initial check and setup event listener for online/offline changes
+    updateOnlineStatus();
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+});
+
+
 window.addEventListener("online", pushNewTicketsWhenOnline);
 
 document.getElementById('createTicket').addEventListener('click', function() {
