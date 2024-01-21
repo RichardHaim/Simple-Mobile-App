@@ -19,12 +19,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
         sessionStorage.clear('dataDownloaded');
         await common.serverLoad('tickets');
         document.location.href = 'home.html';
+        alert('Änderungen gespeichert!');
     });
 });
 
 function getFieldInput() {
     const ticketId = getTicketIdFromUrl();
-    const payload = {
+    // if ticketstatus changes from offen to geschlossen: push today as DatumAbschluss
+    let payload = {
         'Ticketnummer': ticketId,
         'MitarbeiterId': document.getElementById("mitarbeiter_id").value,
         'ProblemKategorieId': document.getElementById("problem_names").value,
@@ -32,7 +34,12 @@ function getFieldInput() {
         'SupportTeamId': document.getElementById("SupportTeamId_names").value,
         'StatusTicketId': document.getElementById("TicketStatusId_names").value,
         'Beschreibung': document.getElementById("description_input").value
-    };
+        };
+    if ( document.getElementById('TicketStatusId_names').value == 2 ) {
+        payload = Object.assign (payload, {'DatumAbschluss' : common.getCurrentDateTime()});
+    } else {
+        payload = Object.assign (payload, {'DatumAbschluss' : ''});
+    }
     return payload;
 }
 
@@ -47,11 +54,6 @@ async function loadTicketData(ticketId) {
             document.getElementById('description_input').value = ticket.Beschreibung;
             document.getElementById('problem_names').value = ticket.ProblemKategorieId;
             document.getElementById('mitarbeiter_id').value = ticket.MitarbeiterId;
-
-            document.getElementById('editTicketForm').addEventListener('submit', function (event) {
-                event.preventDefault();
-                alert('Änderungen gespeichert!');
-            });
         } else {
             alert('Ticket wurde nicht gefunden.');
         }
