@@ -1,45 +1,65 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Hintergrundfarbe hinzugefügt */
+    background-color: #f4f4f4;
 }
-
-form {
-    max-width: 400px; /* Maximale Breite des Formulars für eine bessere Lesbarkeit */
-    margin: 20px auto; /* Zentrierung des Formulars */
-    background-color: #fff; /* Hintergrundfarbe des Formulars */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatten für das Formular */
-}
-
-input, textarea {
-    width: 100%;
+input, textarea, button, form {
+    max-width: 400px;
+    margin: 20px auto;
     padding: 12px;
-    margin: 8px 0;
     box-sizing: border-box;
-    border: 1px solid #ccc; /* Rahmen für Input-Felder hinzugefügt */
     border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 14px;
-    margin: 8px 0;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     width: 100%;
 }
-
 button:hover {
-    opacity: 0.9; /* Geringfügige Anpassung der Hover-Opazität */
+    opacity: 0.9;
 }
 
-.ticketInfo {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
+/* schönere Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover button {
+    background-color: #3e8e41;
 }
