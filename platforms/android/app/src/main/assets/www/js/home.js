@@ -29,6 +29,7 @@ async function pushNewTicketsWhenOnline() {
         payload.forEach(item => {
             common.pushticket(item); });
         localStorage.removeItem('newTicketsQUEUE');
+        sessionStorage.removeItem('dataDownloaded');
         await common.serverLoad('tickets');
     };
 };
