@@ -1,14 +1,32 @@
 import * as common from './common.js';
 
-window.onload = async function () {
+
+window.addEventListener('load', async function () {
+    common.showLoadingPopup(false);
     await createCards();
     // format date
     const dateElements = document.getElementsByClassName('dateElement');
     for (const dateElement of dateElements) {
         const formattedDate = common.formatDateForCards(dateElement);
         dateElement.textContent = formattedDate;
+    };
+});
+
+
+document.getElementById("pageRefreshButton").addEventListener("click", async function (e) {
+    e.preventDefault();
+    const online = await common.onlinechecker();
+    if ( online ) {
+        common.showLoadingPopup(true);
+        sessionStorage.removeItem('dataDownloaded');
+        await common.serverLoad('tickets');
+        window.location.reload();
+    } else {
+    alert('Refresh nicht möglich, Gerät ist offline');
     }
-};
+});
+
+
 
 async function createCards() {
     try {

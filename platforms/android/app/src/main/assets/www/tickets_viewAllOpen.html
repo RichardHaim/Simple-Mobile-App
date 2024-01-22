@@ -4,7 +4,19 @@
         <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
-        <form id="createNewTicket_header"><h1>Offene<br>Tickets</h1></form>
+
+        <div id="loadingPopup" class="popup-overlay">
+            <div class="popup-content">
+                <h2>Daten werden geladen...</h2>
+                <div class="lds"><div></div><div></div><div></div></div>
+                <p>Seite wird aktualisiert....</p>
+            </div>
+        </div>
+
+        <form id="createNewTicket_header">
+            <h1>Offene<br>Tickets</h1>
+            <button id="pageRefreshButton">Seite neu laden</button>
+        </form>
         <div id=ticket_create_content>
             <div id="tickets"></div>
         </div>
