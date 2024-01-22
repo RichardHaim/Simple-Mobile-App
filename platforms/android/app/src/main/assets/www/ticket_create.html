@@ -9,46 +9,46 @@
         <form id="createNewTicket_header">
         <h1>Ein neues Ticket erstellen</h1>
         </form>
+        <div id=ticket_create_content>
+            <form id="createNewTicket_problemkategorieid">
+                <!-- dropdown für den Test = automatisch befüllt -->
+                <div class ="dropdown">
+                <h2><label for="problem_label">Problemkategorie auswählen:</label></h2><br>
+                <select name="problem_names" id="problem_names">
+                </select><br>
+                </div>
+            </form>
 
-        <form id="createNewTicket_problemkategorieid">
-            <!-- dropdown für den Test = automatisch befüllt -->
-            <div class ="dropdown">
-            <h2><label for="problem_label">Problemkategorie auswählen:</label></h2><br>
-            <select name="problem_names" id="problem_names">
-            </select><br>
-            </div>
-        </form>
+            <form id="createNewTicket_dringlichkeitid">
+                <!-- dropdown -->
+                <div class ="dropdown">
+                <h2><label for="dringlichkeit_label">Dringlichkeit auswählen:</label></h2><br>
+                <select name="dringlichkeitid_names" id="dringlichkeitid_names">
+                </select><br>
+                </div>
+            </form>
 
-        <form id="createNewTicket_dringlichkeitid">
-            <!-- dropdown -->
-            <div class ="dropdown">
-            <h2><label for="dringlichkeit_label">Dringlichkeit auswählen:</label></h2><br>
-            <select name="dringlichkeitid_names" id="dringlichkeitid_names">
-            </select><br>
-            </div>
-        </form>
+            <form id="createNewTicket_SupportTeamId">
+                <!-- dropdown -->
+                <div class ="dropdown">
+                <h2><label for="SupportTeamId_label">Support Level auswählen:</label></h2><br>
+                <select name="SupportTeamId_names" id="SupportTeamId_names">
+                </select><br>
+                </div>
+            </form>
 
-        <form id="createNewTicket_SupportTeamId">
-            <!-- dropdown -->
-            <div class ="dropdown">
-            <h2><label for="SupportTeamId_label">Support Level auswählen:</label></h2><br>
-            <select name="SupportTeamId_names" id="SupportTeamId_names">
-            </select><br>
-            </div>
-        </form>
-
-        <form id="createNewTicket_description">
-            <h2><label for="description_label">Beschreibung:</label></h2>
-            <textarea type="text" id="description_input" name="description_input" class="input-box" required></textarea><br>
-        </form>
-<!--
-        <form id="createNewTicket_datetime">
-            <h2><label for="datetime_label">Date:</label></h2>
-            <input type="date" id="datetime_input" name="datetime_input" class="input-box" value="" required><br>
-        </form>
--->
-        <button type="button" id="submit_newTicket">Ticket erstellen</button>
-
+            <form id="createNewTicket_description">
+                <h2><label for="description_label">Beschreibung:</label></h2>
+                <textarea type="text" id="description_input" name="description_input" class="input-box" required></textarea><br>
+            </form>
+    <!--
+            <form id="createNewTicket_datetime">
+                <h2><label for="datetime_label">Date:</label></h2>
+                <input type="date" id="datetime_input" name="datetime_input" class="input-box" value="" required><br>
+            </form>
+    -->
+            <button type="button" id="submit_newTicket">Ticket erstellen</button>
+        </div>
 
     </body>
 </html>

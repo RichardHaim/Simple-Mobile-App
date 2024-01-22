@@ -209,3 +209,18 @@ h1 span {
     color: red;
     font-weight: bold;
 }
+
+#createNewTicket_header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+}
+
+#ticket_create_content {
+    margin-top: 150px;
+}
