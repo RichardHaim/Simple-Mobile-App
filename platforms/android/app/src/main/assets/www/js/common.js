@@ -56,6 +56,9 @@ export async function onlinechecker() {
     }
 };
 
+export async function sqlonlinechecker() {
+}
+
 
 // auslesen localstorage
 export function readJsonObjFromFile(filename) {

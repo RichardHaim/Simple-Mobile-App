@@ -312,28 +312,23 @@ app.get('/getOpenTickets', async (req, res) => {
       }
   });
 
-const checkDatabaseConnection = async () => {
-  try {
-    const poolConnection = await sql.connect(config);
-    console.log('Datenbankverbindung erfolgreich hergestellt');
-    await sql.close();
-    return true;
-  } catch (err) {
-    console.error('Fehler beim Herstellen der Datenbankverbindung:', err.message);
-    return false;
-  }
-};
-
-checkDatabaseConnection().then((isDatabaseConnected) => {
-  if (isDatabaseConnected) {
-    app.listen(port, () => {
-      console.log(`Server läuft auf http://localhost:${port}`);
+app.get('/sqlserverchecker', async (req, res) => {
+    try {
+        const poolConnection = await sql.connect(config);
+        res.send('Datenbankverbindung erfolgreich hergestellt');
+        console.log('Datenbankverbindung erfolgreich hergestellt');
+        await sql.close();
+        return true;
+        } catch (err) {
+        console.error('Fehler beim Herstellen der Datenbankverbindung: ', err.message);
+        return false;
+        }
     });
-  } else {
-    console.log('Die Datenbankverbindung konnte nicht hergestellt werden. Die Anwendung wird nicht gestartet.');
-  }
+
+
+app.listen(port, () => {
+    console.log(`Server läuft auf http://localhost:${port}`);
 });
-  
 
 
 
