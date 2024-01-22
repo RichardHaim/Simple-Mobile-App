@@ -32,7 +32,6 @@ export function saveJsonObjToFile(file, filename) {
 Implement online-checker in various places. There is a function in `common.js` called `onlinechecker()` that returns `true` if online, and `false` if offline.<br>
 Instances, where we check if the phone is online:
 - When changing a ticket: if online: push + message that ticket is changed + go back to `home.html`. If offline: message that changes are stored locally & will be pushed once online + go back to `home.html`
-- `tickets_viewAllOpen.html`: create refresh-button + same logic as startup
 
 
 ## queue
@@ -105,12 +104,13 @@ Implement dropdown dataload from local storage + make sure, that the data pushed
 ## `index.html` refresh popup
 during start, there should be some kind of popup to show the user that the app is loading data. This mechanic should also prevent the user from clicking any buttons.
 
-## online-checker
+## online-checker & data-refresh
 Implement online-checker in various places. There is a function in `common.js` called `onlinechecker()` that returns `true` if online, and `false` if offline.<br>
 Instances, where we check if the phone is online:
 - startup: if offline: provide popup message that device is offline + button to ask for reload. If online: load tables from server. Also include button to say that we are ok with offline mode.
 - `home.html`: automatically refreshes data if status changes from offline to online
 - When submitting a new ticket: if online: push + message that ticket is pushed + go back to `home.html`. If offline: message that ticket is stored locally & will be pushed once online + go back to `home.html`
+- `tickets_viewAllOpen.html` und `tickets_viewAllClosed.html: create refresh-button + load data from server/store in localstorage -- if online. Offline: popup that no functionality
 
 ## Queue (offline-functionality)
 ### new tickets
