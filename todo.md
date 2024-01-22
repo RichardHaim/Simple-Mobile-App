@@ -3,7 +3,6 @@
 ## Grundsätzlich
 - Wir sind offline, speichern ein neues Ticket --> wie wollen wir das Ticket in den offenen Tickets anzeigen?
 - Wir sind offline, und wollen ein lokal gespeichertes Ticket (noch nicht online) ändern --> ja/nein? Wie?
-
 - Server-Abfrage -> Server verfügbar oder nicht? Gleiche Logik wie online/offline. Server nicht verfügbar = offline.
 
 ## `common.js`
