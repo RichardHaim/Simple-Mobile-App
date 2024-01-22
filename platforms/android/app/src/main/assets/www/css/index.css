@@ -224,3 +224,9 @@ h1 span {
 #ticket_create_content {
     margin-top: 150px;
 }
+
+#cardTicketNr {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}

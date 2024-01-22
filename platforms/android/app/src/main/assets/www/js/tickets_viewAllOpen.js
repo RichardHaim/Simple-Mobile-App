@@ -2,6 +2,12 @@ import * as common from './common.js';
 
 window.onload = async function () {
     await createCards();
+    // format date
+    const dateElements = document.getElementsByClassName('dateElement');
+    for (const dateElement of dateElements) {
+        const formattedDate = common.formatDateForCards(dateElement);
+        dateElement.textContent = formattedDate;
+    }
 };
 
 async function createCards() {
@@ -32,15 +38,17 @@ async function createCards() {
                     ticketinfo.classList.add('ticketinfo');
                     ticketinfo.innerHTML = `
                         <form id="ticketForm">
-                            <p>Ticket-Nummer: ${ticket.Ticketnummer}</p>
-                            <p>Support Team: ${mitarbeiter ? `${mitarbeiter.Vorname} ${mitarbeiter.Nachname}` : 'N/A'}</p>
-                            <p>ProblemKategorie: ${problemkategorie ? problemkategorie.Kategorie : 'N/A'}</p>
+                            <p id="cardTicketNr">Ticket: ${ticket.Ticketnummer}</p>
+                            <p>Eingegeben von: ${mitarbeiter ? `${mitarbeiter.Vorname} ${mitarbeiter.Nachname}` : 'N/A'}</p>
+                            <p>Kategorie: ${problemkategorie ? problemkategorie.Kategorie : 'N/A'}</p>
                             <p>Dringlichkeit: ${dringlichkeit ? dringlichkeit.Kategorie : 'N/A'}</p>
-                            <p>SupportTeam: ${supportteam ? supportteam.Team : 'N/A'}</p>
-                            <p>StatusTicket: ${ticketstatus ? ticketstatus.Status : 'N/A'}</p>
+                            <p>Team: ${supportteam ? supportteam.Team : 'N/A'}</p>
+                            <p>Status: ${ticketstatus ? ticketstatus.Status : 'N/A'}</p>
                             <p>Beschreibung: ${ticket.Beschreibung}</p>
-                            <p>DatumEingabe: ${ticket.DatumEingabe}</p>
-                            <p>DatumAbschluss: ${ticket.DatumAbschluss}</p>
+                            <p>
+                                <span>Eingegeben am</span>
+                                <span class="dateElement">${ticket.DatumEingabe}</span>
+                            </p>
                             <button class="editButton" data-ticket-id=${ticket.Ticketnummer}>Ticket bearbeiten</button>
                         </form>
                     `;

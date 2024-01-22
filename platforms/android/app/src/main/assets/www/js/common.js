@@ -245,6 +245,29 @@ export function getCurrentDateTime() {
     return formattedDateTime;
  };
 
+export function formatDateForCards(date) {
+    // Check if date is a string or a DOM element
+    var dateString = typeof date === 'string' ? date : date.textContent.trim();
+
+    // Extract the date part using a regular expression
+    var dateMatch = dateString.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/);
+
+    // Check if a valid date match is found
+    if (dateMatch) {
+        // Attempt to create a Date object
+        var originalDate = new Date(dateMatch[0]);
+
+        // Check if the date is valid
+        if (!isNaN(originalDate.getTime())) {
+            var options = { day: 'numeric', month: 'long', year: 'numeric' };
+            var formattedDate = originalDate.toLocaleDateString('de-AT', options);
+            return formattedDate;
+        }
+    }
+
+    console.error("Invalid date:", dateString);
+    return "Invalid Date";
+}
 
 export function offlinePopup() {
       var popup = document.createElement('div');
