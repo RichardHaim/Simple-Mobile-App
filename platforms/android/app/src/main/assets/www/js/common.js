@@ -33,7 +33,13 @@ getCurrentDateTime()
 offlinePopup()
     selbsterklärend
 
+sqlonlinechecker()
+    true -> sqldb ist online
+    false -> sqldb is offline
+
 */
+
+
 
 
 // Definition aller Tabellen im internen Speicher
@@ -56,8 +62,7 @@ export async function onlinechecker() {
     }
 };
 
-export async function sqlonlinechecker() {
-}
+
 
 
 // auslesen localstorage
@@ -126,6 +131,21 @@ export async function updateTicket (payload) {
     }
 };
 
+export async function sqlonlinechecker() {
+    try {
+        const respone = await fetch ('http://10.0.2.2:3000/sqlserverchecker', {
+            method: 'GET',
+        })
+        if (response.ok) {
+            return true;
+        } else {
+        return false;
+        }
+    } catch (error) {
+        console.error('Fehler beim Herstellen der Datenbankverbindung', error.message);
+        return false;
+    }
+}
 
 
  export async function pushticket (payload) {
