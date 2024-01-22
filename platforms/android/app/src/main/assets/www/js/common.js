@@ -57,6 +57,19 @@ export async function onlinechecker() {
 };
 
 
+export function showLoadingPopup(show) {
+    const body = document.querySelector('body');
+    const loadingPopup = document.getElementById('loadingPopup');
+    if (show) {
+        loadingPopup.style.display = 'block'; // load popup anzeigen
+        body.classList.add('popup-active'); // Klasse 'popup-active' hinzufügen
+    } else {
+        loadingPopup.style.display = 'none'; // Lade-Popup ausblenden
+        body.classList.remove('popup-active'); // Klasse 'popup-active' entfernen
+    }
+}
+
+
 // auslesen localstorage
 export function readJsonObjFromFile(filename) {
     const currentFile = localStorage.getItem(filename);
