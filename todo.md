@@ -1,5 +1,9 @@
 # ToDo
 
+## Grundsätzlich
+- Wir sind offline, speichern ein neues Ticket --> wie wollen wir das Ticket in den offenen Tickets anzeigen?
+- Wir sind offline, und wollen ein lokal gespeichertes Ticket (noch nicht online) ändern --> ja/nein? Wie?
+- Server-Abfrage -> Server verfügbar oder nicht? Gleiche Logik wie online/offline. Server nicht verfügbar = offline.
 
 ## `common.js`
 Make sure that functions/variables used in different locations are stored here + referenced correctly.
@@ -28,11 +32,15 @@ export function saveJsonObjToFile(file, filename) {
 Implement online-checker in various places. There is a function in `common.js` called `onlinechecker()` that returns `true` if online, and `false` if offline.<br>
 Instances, where we check if the phone is online:
 - When changing a ticket: if online: push + message that ticket is changed + go back to `home.html`. If offline: message that changes are stored locally & will be pushed once online + go back to `home.html`
-- `tickets_viewAllOpen.html`: create refresh-button + same logic as startup
 
 
 ## queue
 ### ticket changes
+#### for tickets, that are in `newTicketsQUEUE`
+?????
+
+
+#### for tichets that are online
 Save a) old state of ticket, and b) new state of ticket to `'changeTicketsQUEUE'`. Each time, the device is changing to be online (and automatically at startup): Make a check via the `ticketId`, if the old status is still the same on the server.
 - if yes: push new state from `'changeTicketsQUEUE'` to server & delete entry.
 - if no: Popup that informs user that there are differences + let them decide if they want to discard (delete entry from `'changeTicketsQUEUE'`), or if they want to edit. In case of edit: jump to new page -> fill in current state on server (in fields that cannot be edited) + new state from `'changeTicketsQUEUE'` (in fields that can be edited). Provide "Discard" and "Submit" button. Discard will delete the entry from `'changeTicketsQUEUE'` without push, "Submit" will post the changes to the server + delete from `'changeTicketsQUEUE'`.
@@ -96,12 +104,13 @@ Implement dropdown dataload from local storage + make sure, that the data pushed
 ## `index.html` refresh popup
 during start, there should be some kind of popup to show the user that the app is loading data. This mechanic should also prevent the user from clicking any buttons.
 
-## online-checker
+## online-checker & data-refresh
 Implement online-checker in various places. There is a function in `common.js` called `onlinechecker()` that returns `true` if online, and `false` if offline.<br>
 Instances, where we check if the phone is online:
 - startup: if offline: provide popup message that device is offline + button to ask for reload. If online: load tables from server. Also include button to say that we are ok with offline mode.
 - `home.html`: automatically refreshes data if status changes from offline to online
 - When submitting a new ticket: if online: push + message that ticket is pushed + go back to `home.html`. If offline: message that ticket is stored locally & will be pushed once online + go back to `home.html`
+- `tickets_viewAllOpen.html` und `tickets_viewAllClosed.html: create refresh-button + load data from server/store in localstorage -- if online. Offline: popup that no functionality
 
 ## Queue (offline-functionality)
 ### new tickets

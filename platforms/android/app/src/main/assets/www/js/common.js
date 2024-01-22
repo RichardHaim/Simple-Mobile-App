@@ -56,6 +56,9 @@ export async function onlinechecker() {
     }
 };
 
+export async function sqlonlinechecker() {
+}
+
 
 export function showLoadingPopup(show) {
     const body = document.querySelector('body');
