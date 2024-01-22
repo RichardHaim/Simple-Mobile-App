@@ -1,5 +1,8 @@
 # ToDo
 
+## Grundsätzlich
+- Wir sind offline, speichern ein neues Ticket --> wie wollen wir das Ticket in den offenen Tickets anzeigen?
+- Wir sind offline, und wollen ein lokal gespeichertes Ticket (noch nicht online) ändern --> ja/nein? Wie?
 
 ## `common.js`
 Make sure that functions/variables used in different locations are stored here + referenced correctly.
