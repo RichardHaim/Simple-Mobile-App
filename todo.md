@@ -9,7 +9,9 @@ Abgestimmt, dass der Konflikt nicht implementiert werden muss, aber im Detail be
 
 ## Wer macht wass ?
 > Dori: PowerPoint + Ablauf für die App Präsentation
+
 > Richard: Ablaufdiagramme + Server-Checks
+
 > Michi: Dokumentation für Abgabe bis 1 Woche vor Abgabe
 
 
