@@ -13,6 +13,9 @@ addEventListener('load', async function () {
 
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById("submit_updatedTicket").addEventListener("click", async function () {
+    const online = await common.onlinechecker();
+    const server = await common.sqlonlinechecker();
+    if ( online && server ) {
         const payload = getFieldInput();
         console.log(JSON.stringify(payload));
         await common.updateTicket(payload);
@@ -20,6 +23,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         await common.serverLoad('tickets');
         document.location.href = 'home.html';
         alert('Änderungen gespeichert!');
+    } else {
+        alert('Änderungen können nur mit Verbindung zum Server vorgenommen werden')
+    };
     });
 });
 

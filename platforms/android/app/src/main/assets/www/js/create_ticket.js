@@ -10,15 +10,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const payload = getFieldInput();
         // if online: push to server, if offline: store in newTicketsQUEUE and push if online again
         const online = await common.onlinechecker();
+        const server = await common.sqlonlinechecker();
         console.log(online);
-        if ( online ) {
+        if ( online && server ) {
             sessionStorage.removeItem('dataDownloaded');
             await common.pushticket(payload);
             await common.serverLoad('tickets');
             alert('Neues Ticket erfolgreich hochgeladen');
         } else {
             common.appendJsonObjToFile(payload, 'newTicketsQUEUE');
-            alert('Sie sind offline, Ihr Ticket wird hochgeladen, sobald Sie wieder online sind.');
+            alert('Sie sind offline/der Server ist nicht erreichbar, Ihr Ticket wird hochgeladen, sobald Sie wieder online sind.');
         };
         document.location.href = 'home.html';
     });

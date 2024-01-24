@@ -146,8 +146,9 @@ export async function updateTicket (payload) {
 
 export async function sqlonlinechecker() {
     try {
-        const respone = await fetch ('http://10.0.2.2:3000/sqlserverchecker', {
-            method: 'GET',
+        const response = await fetch ('http://10.0.2.2:3000/sqlserverchecker', {
+            //method: 'GET',
+            method: 'HEAD'
         })
         if (response.ok) {
             return true;
@@ -160,21 +161,44 @@ export async function sqlonlinechecker() {
     }
 }
 
+/*
+export async function pushticket (payload) {
+    try {
+        const response = await fetch ('http://10.0.2.2:3000/CreateTicket', {
+            method: 'POST',
+            body: JSON.stringify (payload),
+            headers: {'Content-Type': 'application/json'}
+        });
+       const result = await response;
+       console.log ("Success: " + result + 'Status: ' + response.status);
+       //alert('Ticket gespeichert');
+    } catch (error) {
+        console.error ('Fehler beim Upload der Tickets:', error);
+    }
+};
+*/
 
- export async function pushticket (payload) {
-     try {
-         const response = await fetch ('http://10.0.2.2:3000/CreateTicket', {
-             method: 'POST',
-             body: JSON.stringify (payload),
-             headers: {'Content-Type': 'application/json'}
-         });
-        const result = await response;
-        console.log ("Success:", result);
-        //alert('Ticket gespeichert');
-     } catch (error) {
-         console.error ('Fehler beim Upload der Tickets:', error);
-     }
- };
+export async function pushticket(payload) {
+    console.log(JSON.stringify(payload));
+    try {
+        const response = await fetch('http://10.0.2.2:3000/CreateTicket', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            const result = await response.json(); // Assuming the response is JSON, adjust accordingly
+            console.log('Success:', result);
+            // alert('Ticket gespeichert');
+        } else {
+            console.error('Fehler beim Upload der Tickets. Status:', response.status);
+        }
+    } catch (error) {
+        console.error('Fehler beim Upload der Tickets:', error);
+    }
+}
+
 
 // Server-GET & speichern im localstorage
 // wenn nichts übergeben wird -> full load
@@ -184,8 +208,9 @@ export async function serverLoad(table) {
     console.log('haben wir speicher?', sessionStorage.getItem('dataDownloaded'));
     if (!sessionStorage.getItem('dataDownloaded')) {
         const online = await onlinechecker();
+        const server = await sqlonlinechecker();
         // Perform download only on initial load
-        if (online || performance.navigation.type === 1) {
+        if ((online && server) || performance.navigation.type === 1) {
             // Set the flag in session storage to indicate that data has been downloaded in this session
             sessionStorage.setItem('dataDownloaded', true);
 
@@ -230,7 +255,7 @@ export async function serverLoad(table) {
     }
         }
         else {
-        offlinePopup();
+        alert('Keine Verbindung zum Server'); //offlinePopup();
         };
     };
 };
@@ -303,8 +328,27 @@ export function formatDateForCards(date) {
 
     console.error("Invalid date:", dateString);
     return "Invalid Date";
-}
+};
 
+
+export async function pushNewTicketsWhenOnline() {
+    const queueNotEmpty = localStorage.getItem('newTicketsQUEUE');
+    const online = await onlinechecker();
+    const server = await sqlonlinechecker();
+    console.log('online: ' + online + ', server: ' + server);
+    if ( queueNotEmpty !== null && online && server ) {
+        const payload = readJsonObjFromFile('newTicketsQUEUE');
+        await Promise.all(payload.map(async item => {
+            await pushticket(item);
+        }));
+        localStorage.removeItem('newTicketsQUEUE');
+        sessionStorage.removeItem('dataDownloaded');
+        await serverLoad('tickets');
+        alert('Alle neuen Tickets aus dem internen Speicher wurden erfolgreich hochgeladen');
+    };
+};
+
+/*
 export function offlinePopup() {
       var popup = document.createElement('div');
       popup.style.position = 'fixed';
@@ -318,7 +362,7 @@ export function offlinePopup() {
       popup.style.border = '1px solid #ccc';
       popup.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.3)';
       popup.style.zIndex = '9999';
-      popup.style.textAlign = 'center'; /* Center content */
+      popup.style.textAlign = 'center';
 
       var message = document.createElement('p');
       message.textContent = 'Sorry, we are offline';
@@ -335,3 +379,4 @@ export function offlinePopup() {
       popup.appendChild(okButton);
       document.body.appendChild(popup);
 }
+*/

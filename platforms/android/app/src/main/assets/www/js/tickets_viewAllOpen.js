@@ -16,13 +16,14 @@ window.addEventListener('load', async function () {
 document.getElementById("pageRefreshButton").addEventListener("click", async function (e) {
     e.preventDefault();
     const online = await common.onlinechecker();
-    if ( online ) {
+    const server = await common.sqlonlinechecker();
+    if ( online && server ) {
         common.showLoadingPopup(true);
         sessionStorage.removeItem('dataDownloaded');
         await common.serverLoad('tickets');
         window.location.reload();
     } else {
-    alert('Refresh nicht möglich, Gerät ist offline');
+    alert('Refresh nicht möglich, Gerät ist offline oder Server nicht erreichbar');
     }
 });
 
@@ -32,6 +33,9 @@ async function createCards() {
     try {
         //const alltickets = common.readAllFiles();
         //console.log('laden von alltickets abgeschlossen', alltickets);
+        const server = await common.sqlonlinechecker();
+        const online = await common.onlinechecker();
+
 
         const localtickets = common.readJsonObjFromFile('tickets');
         if (localtickets && Array.isArray(localtickets)) {
@@ -54,6 +58,14 @@ async function createCards() {
 
                     const ticketinfo = document.createElement('div');
                     ticketinfo.classList.add('ticketinfo');
+
+                    let customButton;
+                    if (!server || !online) {
+                        customButton =`<div class="editButton_offline" data-ticket-id=${ticket.Ticketnummer}>Keine Serververbindung</div>`;
+                    } else {
+                        customButton = `<button class="editButton" data-ticket-id=${ticket.Ticketnummer}>Ticket bearbeiten</button>`;
+                    };
+
                     ticketinfo.innerHTML = `
                         <form id="ticketForm">
                             <p id="cardTicketNr">Ticket: ${ticket.Ticketnummer}</p>
@@ -66,10 +78,9 @@ async function createCards() {
                             <p>
                                 <span>Eingegeben am</span>
                                 <span class="dateElement">${ticket.DatumEingabe}</span>
-                            </p>
-                            <button class="editButton" data-ticket-id=${ticket.Ticketnummer}>Ticket bearbeiten</button>
-                        </form>
-                    `;
+                            </p>`
+                            + customButton;
+                            + `</form>`;
                     ticketListDiv.appendChild(ticketinfo);
                 }
             });
