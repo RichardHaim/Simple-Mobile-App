@@ -1,13 +1,19 @@
 # Deadlines
-14.02.204 -> Präsentation (ppt - Grundgedanke, Use Cases, Live-Demo, Schwierigkeiten während der Entwicklung) + Abgabgegespräch
+14.02.2024 -> Präsentation (ppt - Grundgedanke, Use Cases, Live-Demo, Schwierigkeiten während der Entwicklung) + Abgabgegespräch
 13.02.2024 -> Abgabe des Projekts (Word + Code als zip)
 
 # ToDo
 ## WICHTIG
 Abgestimmt, dass der Konflikt nicht implementiert werden muss, aber im Detail beschrieben
 
-## Grundsätzlich
 
+## Wer macht wass ?
+> Dori: PowerPoint + Ablauf für die App Präsentation
+> Richard: Ablaufdiagramme + Server-Checks
+> Michi: Dokumentation für Abgabe bis 1 Woche vor Abgabe
+
+
+## Grundsätzlich
 - Wir sind offline, speichern ein neues Ticket --> wie wollen wir das Ticket in den offenen Tickets anzeigen?
 - Wir sind offline, und wollen ein lokal gespeichertes Ticket (noch nicht online) ändern --> ja/nein? Wie?
 - Server-Abfrage -> Server verfügbar oder nicht? Gleiche Logik wie online/offline. Server nicht verfügbar = offline.
