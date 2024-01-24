@@ -3,6 +3,9 @@
 13.02.2024 -> Abgabe des Projekts (Word + Code als zip)
 
 # ToDo
+## WICHTIG
+Abgestimmt, dass der Konflikt nicht implementiert werden muss, aber im Detail beschrieben
+
 ## Grundsätzlich
 
 - Wir sind offline, speichern ein neues Ticket --> wie wollen wir das Ticket in den offenen Tickets anzeigen?
