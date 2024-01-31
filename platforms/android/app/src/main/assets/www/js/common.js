@@ -177,7 +177,7 @@ export async function pushticket (payload) {
     }
 };
 */
-// test
+
 export async function pushticket(payload) {
     console.log(JSON.stringify(payload));
     try {
